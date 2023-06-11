@@ -53,6 +53,15 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 ;;
+;;
+;;
+
+;; enable EasyPG encryption
+(require 'epa-file)
+(epa-file-enable)
+
+(load! "funcs.el")
+(load! "org-mode-config.el")
 
 ;;
 (remove-hook 'org-mode-hook #'evil-org-mode)
@@ -76,6 +85,15 @@
 
 ;; set up python lsp
 
+;; python
+(require 'conda)
+(conda-env-autoactivate-mode t)
+(conda-env-initialize-interactive-shells)
+(conda-env-initialize-eshell)
+(add-hook 'find-file-hook (lambda () (when (bound-and-true-p conda-project-env-path)
+                                          (conda-env-activate-for-buffer))))
+(custom-set-variables
+ '(conda-anaconda-home "/home/djn/opt/miniconda3/"))
 
 
 (setq lsp-clients-clangd-args '("--background-index"
@@ -151,13 +169,11 @@
                        "-Xms100m"
                        (concat "-javaagent:" lsp-java-lombok--jar-path)))
 
-(setq magit-log-margin '(t "%Y-%H-%d %T" 30 t 8))
+(setq magit-log-margin '(t "%Y-%m-%d %T" 30 t 8))
 (setq doom-unreal-buffer-functions '(minibufferp))
 
-(defun copy-to-clipboard()
-  (interactive)
-  (shell-command-on-region (region-beginning) (region-end) "xsel -bi"))
-
 (map! "C-x C-t v" #'visit-tags-table
-      "C-x C-t a" #'tags-apropos
-      "C-x C-t c" #'copy-to-clipboard)
+      "C-x C-t a" #'tags-apropos) ; no need for this since there is xclip-mode
+
+(setq url-proxy-services '(("no_proxy" . ".*")))
+(setq read-quoted-char-radix 16)

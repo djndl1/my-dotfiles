@@ -6,6 +6,7 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector
    ["#222222" "#fc618d" "#7bd88f" "#fce566" "#5ad4e6" "#5ad4e6" "#5ad4e6" "#f7f1ff"])
+ '(conda-anaconda-home "/home/djn/opt/miniconda3/")
  '(custom-safe-themes
    '("71e5acf6053215f553036482f3340a5445aee364fb2e292c70d9175fb0cc8af7" "5b809c3eae60da2af8a8cfba4e9e04b4d608cb49584cb5998f6e4a1c87c057c4" default))
  '(fci-rule-color "#585858")
@@ -13,13 +14,26 @@
  '(jdee-db-requested-breakpoint-face-colors (cons "#131313" "#7bd88f"))
  '(jdee-db-spec-breakpoint-face-colors (cons "#131313" "#525053"))
  '(objed-cursor-color "#fc618d")
+ '(org-agenda-files '("/media/djn/opt/Notes/CSNotes/TODO.org"))
  '(org-safe-remote-resources
-   '("\\`https://fniessen\\.github\\.io/org-html-themes/setup/theme-readtheorg\\.setup\\'"))
+   '("\\`https://fniessen\\.github\\.io/org-html-themes/org/theme-readtheorg\\.setup\\'" "\\`https://fniessen\\.github\\.io/org-html-themes/setup/theme-readtheorg\\.setup\\'"))
  '(pdf-view-midnight-colors (cons "#f7f1ff" "#222222"))
  '(rustic-ansi-faces
    ["#222222" "#fc618d" "#7bd88f" "#fce566" "#5ad4e6" "#5ad4e6" "#5ad4e6" "#f7f1ff"])
  '(safe-local-variable-values
-   '((user-mail-address . "HongZhi.Deng@cisdi.com.cn")
+   '((org-journal-enable-encryption . t)
+     (org-journal-file-type quote yearly)
+     (eval setq org-agenda-files
+      (concat
+       (projectile-project-root)
+       "/TODO.org"))
+     (org-agenda-files concat
+      (projectile-project-root)
+      "/TODO.org")
+     (org-agenda-files "/home/djn/Notes/CSNotes/TODO.org")
+     (org-agend-files "~/Notes/CSNotes/TODO.org")
+     (org-agend-file "~/Notes/CSNotes/TODO.org")
+     (user-mail-address . "HongZhi.Deng@cisdi.com.cn")
      (lsp-java-configuration-runtimes quote
       [(:name "Oracle Jdk8" :path "/media/djn/opt/software/oracle-jdk8/jdk1.8.0_301" :default t)])))
  '(vc-annotate-background "#222222")
