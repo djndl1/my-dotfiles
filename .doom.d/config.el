@@ -177,3 +177,10 @@
 
 (setq url-proxy-services '(("no_proxy" . ".*")))
 (setq read-quoted-char-radix 16)
+
+(add-hook 'spell-fu-mode-hook
+          (lambda()
+            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "de"))
+            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "en"))
+            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "fr"))
+            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "es"))))
