@@ -1,4 +1,5 @@
 alias git-dotfile='git --git-dir=${HOME}/.dotfiles --work-tree=$HOME'
+stty stop ''
 
 function java-debug-args {
     echo "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=$1"
