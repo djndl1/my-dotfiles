@@ -72,16 +72,16 @@
 (require 'dap-netcore)
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
 (setq lsp-csharp-server-path
-      "/media/djn/opt/software/omnisharp/OmniSharp")
+      "~/opt/omnisharp/OmniSharp")
 
-(setq dap-netcore-install-dir "/media/djn/opt/software/netcoredbg/")
+(setq dap-netcore-install-dir "~/opt/netcoredbg/")
 
 ;; set up java lsp
-(setq lsp-java-server-install-dir "/media/djn/opt/software/jdtls")
+(setq lsp-java-server-install-dir "~/opt/jdtls")
 (setq lsp-java-import-maven-enabled t)
 
 ;; set up XML lsp
-(setq lsp-xml-jar-file "/media/djn/opt/software/xmllsp/xmllsp.jar")
+(setq lsp-xml-jar-file "~/opt/xmllsp/xmllsp.jar")
 
 ;; set up python lsp
 
