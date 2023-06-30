@@ -1,0 +1,10 @@
+# -*- mode: snippet -*-
+# name: usingbasic
+# key: usingbasic
+# --
+
+using System;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
