@@ -84,6 +84,7 @@
 
        :tools
        ;;ansible
+       biblio
        (debugger +lsp)          ; FIXME stepping through code, to help you add bugs
        direnv
        docker
@@ -136,7 +137,10 @@
        (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
        julia             ; a better, faster MATLAB
        kotlin            ; a better, slicker Java(Script)
-       latex             ; writing papers in Emacs has never been so fun
+       (latex +latexmk
+              +lsp
+              +fold
+              +cdlatex)             ; writing papers in Emacs has never been so fun
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
@@ -150,6 +154,7 @@
             +passwords
             +gnuplot
             +journal
+            +hugo
             +roam2)               ; organize your plain life in plain text
        ;;php               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
