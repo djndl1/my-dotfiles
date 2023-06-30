@@ -184,3 +184,9 @@
             (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "en"))
             (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "fr"))
             (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "es"))))
+
+;; load visual-basic-mode
+
+(autoload 'visual-basic-mode "~/.doom.d/modules/basic/visual-basic-mode.el" "Visual Basic mode." t)
+(push '("\\.\\(?:frm\\|\\(?:ba\\|cl\\|vb\\)s\\)\\'" . visual-basic-mode)
+        auto-mode-alist)
