@@ -93,7 +93,7 @@
 (add-hook 'find-file-hook (lambda () (when (bound-and-true-p conda-project-env-path)
                                           (conda-env-activate-for-buffer))))
 (custom-set-variables
- '(conda-anaconda-home "/home/djn/opt/miniconda3/"))
+ '(conda-anaconda-home "~/opt/miniconda3/"))
 
 
 (setq lsp-clients-clangd-args '("--background-index"
@@ -130,7 +130,7 @@
 (scroll-bar-mode t)
 (menu-bar-mode t)
 
-(setq lsp-rust-analyzer-server-command "/home/djn/.local/bin/rust-analyzer")
+(setq lsp-rust-analyzer-server-command "~/.local/bin/rust-analyzer")
 
 ;; (lsp-register-client
 ;;      (make-lsp-client :new-connection (lsp-tramp-connection "clangd")
