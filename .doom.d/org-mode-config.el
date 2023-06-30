@@ -3,6 +3,7 @@
 
 (require 'ox-publish)
 (require 'org-protocol)
+(require 'oc-bibtex)
 ;; org-mode customization
 (setq org-use-tag-inheritance t)
 (setq org-use-property-inheritance t)
@@ -26,3 +27,13 @@
 (add-to-list 'org-capture-templates '("pL" "Protocol Link" entry
                                       (file+headline "~/Notes/InProgress/captured-links.org" "Links")
                                       "* %? [[%:link][%:description]] \nCaptured On: %U"))
+
+;; set up org-roam
+(setq org-roam-directory "~/Notes/")
+(org-roam-db-autosync-mode)
+
+;; for better org-roam export
+(require 'org-roam-export)
+
+;; set up CSL
+(setq org-cite-csl-styles-dir "~/Notes/CSNotes/resources/")
