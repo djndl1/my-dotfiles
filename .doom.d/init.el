@@ -103,6 +103,7 @@
        ;;taskrunner        ; taskrunner for all your projects
        ;;terraform         ; infrastructure as code
        tmux              ; an API for interacting with tmux
+       tree-sitter
        ;;upload            ; map local to remote projects via ssh/ftp
 
        :os
@@ -111,12 +112,14 @@
 
        :lang
        ;;agda              ; types of types of types of types...
-       (cc +lsp)                ; C/C++/Obj-C madness
+       (cc +lsp
+           +tree-sitter)                ; C/C++/Obj-C madness
        ;;clojure           ; java with a lisp
        common-lisp       ; if you've seen one lisp, you've seen them all
        ;;coq               ; proofs-as-programs
        ;;crystal           ; ruby at the speed of c
-       (csharp +lsp)            ; unity, .NET, and mono shenanigans
+       (csharp +lsp
+               +dotnet)            ; unity, .NET, and mono shenanigans
        data              ; config/data formats
        ;;(dart +flutter)   ; paint ui and not much else
        ;;elixir            ; erlang done right
@@ -125,18 +128,23 @@
        ;;erlang            ; an elegant language for a more civilized age
        ;;ess               ; emacs speaks statistics
        ;;faust             ; dsp, but you get to keep your soul
-       fsharp            ; ML stands for Microsoft's Language
+       (fsharp +lsp)            ; ML stands for Microsoft's Language
        ;;fstar             ; (dependent) types and (monadic) effects and Z3
        ;;gdscript          ; the language you waited for
-       (go +lsp)         ; the hipster dialect
+       (go +lsp
+           +tree-sitter)         ; the hipster dialect
        ;;(haskell +dante)  ; a language that's lazier than I am
        ;;hy                ; readability of scheme w/ speed of python
        ;;idris             ;
-       (json +lsp)              ; At least it ain't XML
-       (java +lsp) ; the poster child for carpal tunnel syndrome
-       (javascript +lsp)        ; all(hope(abandon(ye(who(enter(here))))))
-       julia             ; a better, faster MATLAB
-       kotlin            ; a better, slicker Java(Script)
+       (json +lsp
+             +tree-sitter)              ; At least it ain't XML
+       (java +lsp
+             +tree-sitter) ; the poster child for carpal tunnel syndrome
+       (javascript +lsp
+                   +tree-sitter)        ; all(hope(abandon(ye(who(enter(here))))))
+       (julia +lsp
+              +tree-sitter)             ; a better, faster MATLAB
+       (kotlin +lsp)            ; a better, slicker Java(Script)
        (latex +latexmk
               +lsp
               +fold
@@ -144,7 +152,8 @@
        ;;lean
        ;;factor
        ;;ledger            ; an accounting system in Emacs
-       lua               ; one-based indices? one-based indices
+       (lua +lsp
+            +tree-sitter)               ; one-based indices? one-based indices
        markdown          ; writing docs for people to ignore
        nim               ; python + lisp at the speed of c
        ;;nix               ; I hereby declare "nix geht mehr!"
@@ -156,21 +165,25 @@
             +journal
             +hugo
             +roam2)               ; organize your plain life in plain text
-       ;;php               ; perl's insecure younger brother
+       (php +lsp
+            +tree-sitter)               ; perl's insecure younger brother
        ;;plantuml          ; diagrams for confusing people more
        ;;purescript        ; javascript, but functional
        (python +lsp
                +conda
+               +tree-sitter
                +cython)           ; beautiful is better than ugly
        qt                ; the 'cutest' gui framework ever
        ;;racket            ; a DSL for DSLs
        ;;raku              ; the artist formerly known as perl6
-       rest              ; Emacs as a REST client
-       ;;rst               ; ReST in peace
+       (rest +jq)              ; Emacs as a REST client
+       rst               ; ReST in peace
        ;;(ruby +rails)     ; 1.step {|i| p "Ruby is #{i.even? ? 'love' : 'life'}"}
-       (rust +lsp)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
-       (scala +lsp)             ; java, but good
-       scheme            ; a fully conniving family of lisps
+       (rust +lsp
+             +tree-sitter)              ; Fe2O3.unwrap().unwrap().unwrap().unwrap()
+       (scala +lsp
+              +tree-sitter)             ; java, but good
+       (scheme +guile)            ; a fully conniving family of lisps
        (sh +lsp
            +fish
            +powershell
@@ -179,8 +192,11 @@
        ;;solidity          ; do you need a blockchain? No.
        ;;swift             ; who asked for emoji variables?
        ;;terra             ; Earth and Moon in alignment for performance.
-       (web +lsp)               ; the tubes
-       yaml              ; JSON, but readable
+       (web +lsp
+            +tree-sitter)               ; the tubes
+       (yaml +lsp
+             +tree-sitter)
+                                        ; JSON, but readable
 
        :email
        ;;(mu4e +gmail)

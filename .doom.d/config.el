@@ -72,16 +72,16 @@
 (require 'dap-netcore)
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
 (setq lsp-csharp-server-path
-      "~/opt/omnisharp/OmniSharp")
+      "/home/djn/opt/omnisharp/OmniSharp")
 
-(setq dap-netcore-install-dir "~/opt/netcoredbg/")
+(setq dap-netcore-install-dir "/home/djn/opt/netcoredbg/")
 
 ;; set up java lsp
-(setq lsp-java-server-install-dir "~/opt/jdtls")
+(setq lsp-java-server-install-dir "/home/djn/opt/jdtls")
 (setq lsp-java-import-maven-enabled t)
 
 ;; set up XML lsp
-(setq lsp-xml-jar-file "~/opt/xmllsp/xmllsp.jar")
+(setq lsp-xml-jar-file "/home/djn/opt/xmllsp/xmllsp.jar")
 
 ;; set up python lsp
 
@@ -180,13 +180,16 @@
 
 (add-hook 'spell-fu-mode-hook
           (lambda()
-            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "de"))
-            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "en"))
-            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "fr"))
-            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "es"))))
+            (spell-fu-dictionary-add (spell-fu-get-ispell-dictionary "en"))))
 
 ;; load visual-basic-mode
 
 (autoload 'visual-basic-mode "~/.doom.d/modules/basic/visual-basic-mode.el" "Visual Basic mode." t)
 (push '("\\.\\(?:frm\\|\\(?:ba\\|cl\\|vb\\)s\\)\\'" . visual-basic-mode)
         auto-mode-alist)
+
+
+(autoload 'vba-mode "~/.doom.d/modules/basic/vba-mode.el" "VBA mode." t)
+
+;; load fb-mode
+(autoload 'fb-mode "~/.doom.d/modules/basic/fb-mode.el" "FB mode." t)

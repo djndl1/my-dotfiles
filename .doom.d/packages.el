@@ -51,6 +51,7 @@
 
 
 (package! vala-mode)
+(package! basic-mode)
 (package! citeproc)
 (package! adoc-mode)
 (package! gitconfig-mode
