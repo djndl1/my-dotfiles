@@ -197,6 +197,8 @@
        (yaml +lsp
              +tree-sitter)
                                         ; JSON, but readable
+       (zig  +lsp
+             +tree-sitter)
 
        :email
        ;;(mu4e +gmail)
