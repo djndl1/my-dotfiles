@@ -56,6 +56,9 @@
 ;;
 ;;
 
+(require 'exec-path-from-shell)
+(exec-path-from-shell-initialize)
+
 ;; enable EasyPG encryption
 (require 'epa-file)
 (epa-file-enable)

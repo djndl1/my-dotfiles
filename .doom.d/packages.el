@@ -53,6 +53,7 @@
 (package! vala-mode)
 (package! basic-mode)
 (package! sage-shell-mode)
+(package! exec-path-from-shell)
 (package! citeproc)
 (package! adoc-mode)
 (package! gitconfig-mode
