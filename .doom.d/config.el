@@ -66,6 +66,7 @@
 
 (load! "funcs.el")
 (load! "org-mode-config.el")
+(load! "abbrev.el")
 
 ;;
 (remove-hook 'org-mode-hook #'evil-org-mode)
