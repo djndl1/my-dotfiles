@@ -55,6 +55,7 @@
 ;;
 ;;
 ;;
+(global-set-key (kbd "C-h-DEL") 'kill-whole-line)
 
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
