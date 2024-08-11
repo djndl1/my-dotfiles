@@ -56,6 +56,7 @@
 (package! exec-path-from-shell)
 (package! citeproc)
 (package! adoc-mode)
+(package! cil-mode)
 (package! gitconfig-mode
 	  :recipe (:host github :repo "magit/git-modes"
 			 :files ("gitconfig-mode.el")))
