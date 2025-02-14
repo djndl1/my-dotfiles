@@ -8,3 +8,16 @@ function java-debug-args {
 export ORACLE_PATH="${HOME}/Oracle/dbs"
 export TNS_ADMIN="${HOME}/Oracle/network/admin"
 
+function yt-ssh {
+    local CMD
+    CMD='export PATH="${HOME}/.local/bin:${PATH}";yt-videos.sh '
+    CMD="${CMD} $@"
+    ssh Redmi9A  "$CMD"
+}
+
+function sync-vid-ssh {
+    local CMD
+    CMD='export PATH="${HOME}/.local/bin:${PATH}";rsync-videos.sh '
+    ssh Redmi9A  "$CMD"
+}
+
