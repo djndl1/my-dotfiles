@@ -9,3 +9,24 @@ export MANPAGER='nvim +Man!'
 
 HKPROXY='http://djn:freebird@mytencent2:8888'
 
+export ORACLE_PATH="${HOME}/Oracle/dbs"
+export TNS_ADMIN="${HOME}/Oracle/network/admin"
+
+function redmi9A-yt-videos {
+    local CMD
+    CMD='export PATH="${HOME}/.local/bin:${PATH}";yt-videos.sh '
+    CMD="${CMD} $@"
+    ssh Redmi9A  "$CMD"
+}
+
+function redmi9A-sync-videos {
+    local CMD
+    CMD='export PATH="${HOME}/.local/bin:${PATH}";rsync-videos.sh '
+    ssh Redmi9A  "$CMD"
+}
+
+function redmi9A-show-battery {
+    local CMD
+    CMD='export PATH="${HOME}/.local/bin:${PATH}";show_battery.sh '
+    ssh Redmi9A  "$CMD"
+}
