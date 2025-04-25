@@ -59,6 +59,7 @@
 ;; enable EasyPG encryption
 (require 'epa-file)
 (epa-file-enable)
+(add-to-list 'org-modules 'org-habit)
 
 (load! "funcs.el")
 (load! "org-mode-config.el")

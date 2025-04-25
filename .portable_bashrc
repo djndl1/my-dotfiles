@@ -4,3 +4,8 @@ stty stop ''
 function java-debug-args {
     echo "-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=$1"
 }
+
+export MANPAGER='nvim +Man!'
+
+HKPROXY='http://djn:freebird@mytencent2:8888'
+
