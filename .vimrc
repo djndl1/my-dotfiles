@@ -28,6 +28,8 @@ Plugin 'tpope/vim-fugitive'
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 "
+Plugin 'glepnir/oceanic-material'
+"
 
 " Git diff
 Plugin 'airblade/vim-gitgutter'
@@ -88,8 +90,7 @@ filetype plugin indent on    " required
 "
 
 """ Other customization
-
-:colorscheme oceanic_material
+colorscheme oceanic_material
 set syntax=on
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
