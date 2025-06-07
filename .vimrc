@@ -33,6 +33,7 @@ Plugin 'glepnir/oceanic-material'
 
 " Git diff
 Plugin 'airblade/vim-gitgutter'
+Plugin 'tpope/vim-speeddating'
 
 " a status/tabline
 Plugin 'vim-airline/vim-airline'
