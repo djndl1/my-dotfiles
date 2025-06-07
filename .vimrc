@@ -97,3 +97,4 @@ set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat+=%f:%l:%c:%m
 
 
+set guifont=Cascadia_Mono:h11
