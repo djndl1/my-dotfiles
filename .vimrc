@@ -27,9 +27,15 @@ Plugin 'tpope/vim-fugitive'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
-"
+" colorschemes
 Plugin 'glepnir/oceanic-material'
+Plugin 'altercation/vim-colors-solarized'
+Plugin 'sickill/vim-monokai'
+Plugin 'arcticicestudio/nord-vim'
+Plugin 'joshdick/onedark.vim'
 "
+Plugin 'tpope/vim-surround'
+Plugin 'cohama/lexima.vim'
 
 " Git diff
 Plugin 'airblade/vim-gitgutter'
@@ -47,6 +53,7 @@ Plugin 'rhysd/vim-lsp-ale'
 Plugin 'mattn/vim-lsp-settings'
 " async completion
 Plugin 'prabirshrestha/asyncomplete.vim'
+Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 " manage tags file
 Plugin 'ludovicchabant/vim-gutentags'
 " display tags
@@ -61,6 +68,8 @@ Plugin 'editorconfig/editorconfig-vim'
 
 " NERDTree file explorer
 Plugin 'preservim/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
 Plugin 'ryanoasis/vim-devicons'
 Plugin 'easymotion/vim-easymotion'
 
@@ -72,6 +81,9 @@ Plugin 'bash-support.vim'
 Plugin 'asm8051.vim'
 Plugin 'MSIL-Assembly'
 Plugin 'philj56/vim-asm-indent'
+
+" async linting and make framework
+Plugin 'neomake/neomake'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -88,11 +100,61 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 "
-"
+" map NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" register LSP server
+if (executable('ccls'))
+	au user lsp_setup call lsp#register_server({
+		\ 'name': 'ccls',
+		\	'cmd': { server_info -> ['ccls']},
+		\	'allowlist': ['c']
+		\ })
+endif
+
+" set up vim-lsp keys
+function! s:on_lsp_buffer_enabled() abort
+    setlocal omnifunc=lsp#complete
+    setlocal signcolumn=yes
+    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+    nmap <buffer> gd <plug>(lsp-definition)
+    nmap <buffer> gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> gr <plug>(lsp-references)
+    nmap <buffer> gi <plug>(lsp-implementation)
+    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>rn <plug>(lsp-rename)
+    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> K <plug>(lsp-hover)
+    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
+    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+
+    let g:lsp_format_sync_timeout = 1000
+    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+
+    " refer to doc to add more commands
+endfunction
+
+augroup lsp_install
+    au!
+    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
+
+" set up asynccomplete
+inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
+
+" GDB
+packadd termdebug
+
 
 """ Other customization
-colorscheme oceanic_material
+colorscheme onedark
 set syntax=on
+set number
 
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat+=%f:%l:%c:%m
