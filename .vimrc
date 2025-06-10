@@ -37,6 +37,11 @@ Plugin 'joshdick/onedark.vim'
 Plugin 'tpope/vim-surround'
 Plugin 'cohama/lexima.vim'
 
+"
+"
+Plugin 'junegunn/fzf'
+Plugin 'junegunn/fzf.vim'
+
 " Git diff
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-speeddating'
@@ -161,3 +166,4 @@ set grepformat+=%f:%l:%c:%m
 
 
 set guifont=Cascadia_Mono:h11
+set clipboard=unnamedplus
