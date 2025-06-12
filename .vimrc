@@ -80,6 +80,9 @@ Plugin 'easymotion/vim-easymotion'
 
 " Language Syntax Support
 Plugin 'sheerun/vim-polyglot'
+" Snippet Support
+Plugin 'Shougo/neosnippet.vim'
+Plugin 'Shougo/neosnippet-snippets'
 
 Plugin 'bash-support.vim'
 " Assembly
@@ -152,6 +155,12 @@ inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
+" FZF mapping
+nnoremap <Space><Space> :Files<CR>
+nnoremap <Space>ss :BLines<CR>
+nnoremap <Space>sp :Rg<CR>
+
+
 " GDB
 packadd termdebug
 
@@ -167,3 +176,7 @@ set grepformat+=%f:%l:%c:%m
 
 set guifont=Cascadia_Mono:h11
 set clipboard=unnamedplus
+
+if exists("~/site_vimrc")
+	source ~/.site_vimrc
+endif
