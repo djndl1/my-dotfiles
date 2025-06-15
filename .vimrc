@@ -38,9 +38,10 @@ Plugin 'tpope/vim-surround'
 Plugin 'cohama/lexima.vim'
 
 "
-"
+" file/text search
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
+Plugin 'mhinz/vim-grepper'
 
 " Git diff
 Plugin 'airblade/vim-gitgutter'
@@ -156,9 +157,19 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 
 " FZF mapping
+
+command! -bang -nargs=* GGrep
+      \ call fzf#vim#grep(
+      \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
+      \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+
 nnoremap <Space><Space> :Files<CR>
 nnoremap <Space>ss :BLines<CR>
 nnoremap <Space>sp :Rg<CR>
+nnoremap <Space>g<Space> :GFiles<CR>
+nnoremap <Space>tp :Tags<CR>
+nnoremap <Space>sg :GGrep<CR>
+nnoremap <Space>s<Space>Gs :Grepper<Space>
 
 
 " GDB
@@ -166,6 +177,7 @@ packadd termdebug
 
 
 """ Other customization
+set exrc
 colorscheme onedark
 set syntax=on
 set number
@@ -177,6 +189,6 @@ set grepformat+=%f:%l:%c:%m
 set guifont=Cascadia_Mono:h11
 set clipboard=unnamedplus
 
-if exists("~/site_vimrc")
+if filereadable(expand("~/.site_vimrc"))
 	source ~/.site_vimrc
 endif
