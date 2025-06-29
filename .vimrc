@@ -27,29 +27,35 @@ Plugin 'tpope/vim-fugitive'
 " Install L9 and avoid a Naming conflict if you've already installed a
 " different version somewhere else.
 " Plugin 'ascenator/L9', {'name': 'newL9'}
+
 " colorschemes
 Plugin 'glepnir/oceanic-material'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'sickill/vim-monokai'
 Plugin 'arcticicestudio/nord-vim'
+
 Plugin 'joshdick/onedark.vim'
-"
+" deal with surroundings like quotes, parentheses, HTML tags
 Plugin 'tpope/vim-surround'
-Plugin 'cohama/lexima.vim'
+" input surroundings
+Plugin  'cohama/lexima.vim'
+
+" automatically save the current buffer
+Plugin '907th/vim-auto-save'
 
 "
 " file/text search
 Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mhinz/vim-grepper'
-
-" Git diff
+"
+"" Git diff
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-speeddating'
-
-" a status/tabline
+"
+"" a status/tabline
 Plugin 'vim-airline/vim-airline'
-" Linter
+"" Linter
 Plugin 'dense-analysis/ale'
 " lsp support
 Plugin 'prabirshrestha/vim-lsp'
@@ -94,9 +100,11 @@ Plugin 'philj56/vim-asm-indent'
 " async linting and make framework
 Plugin 'neomake/neomake'
 
+Plugin 'https://gitlab.com/HiPhish/info.vim'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
+filetype plugin indent on    " three options on, required
 " To ignore plugin indent changes, instead use:
 "filetype plugin on
 "
@@ -110,6 +118,16 @@ filetype plugin indent on    " required
 " Put your non-Plugin stuff after this line
 "
 " map NERDTree
+
+""" Enable builtin packages
+" more features of %
+packadd! matchit
+" easy comment :h comment.txt
+packadd! comment
+" auotmatically turn off search hightlight 
+packadd! nohlsearch
+""" 
+
 map <C-n> :NERDTreeToggle<CR>
 
 " register LSP server
@@ -163,32 +181,70 @@ command! -bang -nargs=* GGrep
       \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
       \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
+" search for files
 nnoremap <Space><Space> :Files<CR>
+" search for lines
 nnoremap <Space>ss :BLines<CR>
+" ripgrep in the current directory
 nnoremap <Space>sp :Rg<CR>
+" git ls-files
 nnoremap <Space>g<Space> :GFiles<CR>
+" search for tags in the current directory
 nnoremap <Space>tp :Tags<CR>
+" git grep
 nnoremap <Space>sg :GGrep<CR>
+
+" Grepper mapping
 nnoremap <Space>s<Space>Gs :Grepper<Space>
 
 
 " GDB
 packadd termdebug
 
+" Enable auto save
+let g:auto_save = 1
+
 
 """ Other customization
+set incsearch
+set hlsearch " highlight the previous search. turn off the current highlight with :nohlsearch
+
+" directory local
 set exrc
+
+
+" show cursor status
+set ruler
+" what commands did I type
+set showcmd
+
+" enable mouse
+set mouse=a
+
+" long history for :
+set history=5000
+
 colorscheme onedark
+
+" set a ruler
+set colorcolumn=120
+
 set syntax=on
+" show line numbers
 set number
 
+" configure ripgrep as external grep
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat+=%f:%l:%c:%m
 
-
+" font used by GVim
 set guifont=Cascadia_Mono:h11
+" X11 * clipboard, + Windows clipboard
 set clipboard=unnamedplus
 
+runtime! ftplugin/man.vim
+
+""" machine-specific configuration may be configured in this file
 if filereadable(expand("~/.site_vimrc"))
 	source ~/.site_vimrc
 endif
