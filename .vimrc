@@ -130,12 +130,12 @@ packadd! nohlsearch
 
 map <C-n> :NERDTreeToggle<CR>
 
-" register LSP server
-if (executable('ccls'))
+ register LSP server
+if (executable('clangd'))
 	au user lsp_setup call lsp#register_server({
-		\ 'name': 'ccls',
-		\	'cmd': { server_info -> ['ccls']},
-		\	'allowlist': ['c']
+		\ 'name': 'clangd',
+		\	'cmd': { server_info -> ['clangd']},
+		\	'allowlist': ['c', 'cpp', 'cxx', 'cc']
 		\ })
 endif
 
@@ -154,8 +154,8 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
-    nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
+		nmap <expr><buffer> <c-d> popup_list()->empty() ? '<c-d>' : lsp#scroll(+4)
+    nmap <expr><buffer> <c-u> popup_list()->empty() ? '<c-u>' : lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
@@ -202,6 +202,7 @@ nnoremap <Space>s<Space>Gs :Grepper<Space>
 packadd termdebug
 
 " Enable auto save
+set autowrite
 let g:auto_save = 1
 
 
@@ -243,6 +244,11 @@ set guifont=Cascadia_Mono:h11
 set clipboard=unnamedplus
 
 runtime! ftplugin/man.vim
+
+""" filetype specific settings
+if filereadable(expand("~/.filetype_vimrc"))
+	source ~/.filetype_vimrc
+endif
 
 """ machine-specific configuration may be configured in this file
 if filereadable(expand("~/.site_vimrc"))
