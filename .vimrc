@@ -229,6 +229,9 @@ set ruler
 " what commands did I type
 set showcmd
 
+" I want case-insensitive search
+set ignorecase
+
 " enable mouse
 set mouse=a
 
