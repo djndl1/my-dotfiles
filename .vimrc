@@ -260,19 +260,6 @@ if filereadable(expand("~/.filetype_vimrc"))
 	source ~/.filetype_vimrc
 endif
 
-autocmd FileType csharp call lsp#disable()
-autocmd FileType csharp :LspStopServer
-autocmd FileType csharp nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
-autocmd FileType csharp nmap <buffer> <leader>gs <Plug>(omnisharp_find_symbol)
-autocmd FileType csharp nmap <buffer> <leader>gS <Plug>(omnisharp_find_type)
-autocmd FileType csharp nmap <buffer> <leader>gr <Plug>(omnisharp_find_usages)
-autocmd FileType csharp nmap <buffer> <leader>gi <Plug>(omnisharp_find_implementations)
-autocmd FileType csharp nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_type_definition)
-autocmd FileType csharp nmap <buffer> <leader>g. <Plug>(omnisharp_code_actions)
-autocmd FileType csharp nmap <buffer> <leader>gh <Plug>(omnisharp_highlight)
-autocmd FileType csharp nmap <buffer> <leader>rn <Plug>(omnisharp_rename)
-autocmd FileType csharp nmap <buffer> <leader>K <Plug>(omnisharp_documentation)
-
 """ machine-specific configuration may be configured in this file
 if filereadable(expand("~/.site_vimrc"))
 	source ~/.site_vimrc
