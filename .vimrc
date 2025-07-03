@@ -59,6 +59,7 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'dense-analysis/ale'
 " lsp support
 Plugin 'prabirshrestha/vim-lsp'
+Plugin 'OmniSharp/Omnisharp-vim'
 " integrate lsp with ALE
 Plugin 'rhysd/vim-lsp-ale'
 " automatically setup lsp servers
@@ -122,15 +123,17 @@ filetype plugin indent on    " three options on, required
 """ Enable builtin packages
 " more features of %
 packadd! matchit
-" easy comment :h comment.txt
-packadd! comment
-" auotmatically turn off search hightlight 
-packadd! nohlsearch
+if v:version >= 910
+  " easy comment :h comment.txt
+  packadd! comment
+  " auotmatically turn off search hightlight 
+  packadd! nohlsearch
+endif
 """ 
 
 map <C-n> :NERDTreeToggle<CR>
 
- register LSP server
+"register LSP server
 if (executable('clangd'))
 	au user lsp_setup call lsp#register_server({
 		\ 'name': 'clangd',
@@ -139,25 +142,32 @@ if (executable('clangd'))
 		\ })
 endif
 
+let g:ale_linters = {'cs': ['omnisharp']}
+
 " set up vim-lsp keys
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> gd <plug>(lsp-definition)
-    nmap <buffer> gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> gr <plug>(lsp-references)
-    nmap <buffer> gi <plug>(lsp-implementation)
-    nmap <buffer> gt <plug>(lsp-type-definition)
+    nmap <buffer> <leader>gd <plug>(lsp-definition)
+    nmap <buffer> <leader>gs <plug>(lsp-document-symbol-search)
+    nmap <buffer> <leader>gS <plug>(lsp-workspace-symbol-search)
+    nmap <buffer> <leader>gr <plug>(lsp-references)
+    nmap <buffer> <leader>gi <plug>(lsp-implementation)
+    nmap <buffer> <leader>gd <plug>(lsp-type-definition)
+    nmap <buffer> <leader>g. <plug>(lsp-code-action)
+    nmap <buffer> <leader>gD :LspDocumentDiagnostics<Enter>
     nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> [g <plug>(lsp-previous-diagnostic)
-    nmap <buffer> ]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> K <plug>(lsp-hover)
+    nmap <buffer> <leader>[g <plug>(lsp-previous-diagnostic)
+    nmap <buffer> <leader>]g <plug>(lsp-next-diagnostic)
+    nmap <buffer> <leader>K <plug>(lsp-hover)
 		nmap <expr><buffer> <c-d> popup_list()->empty() ? '<c-d>' : lsp#scroll(+4)
     nmap <expr><buffer> <c-u> popup_list()->empty() ? '<c-u>' : lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
+	  let g:lsp_diagnostics_enabled = 1
+	  let g:lsp_diagnostics_echo_cursor = 1
+	  let g:lsp_diagnostics_float_cursor = 1
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
 
     " refer to doc to add more commands
@@ -249,6 +259,18 @@ runtime! ftplugin/man.vim
 if filereadable(expand("~/.filetype_vimrc"))
 	source ~/.filetype_vimrc
 endif
+
+autocmd FileType csharp call lsp#disable()
+autocmd FileType csharp nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
+autocmd FileType csharp nmap <buffer> <leader>gs <Plug>(omnisharp_find_symbol)
+autocmd FileType csharp nmap <buffer> <leader>gS <Plug>(omnisharp_find_type)
+autocmd FileType csharp nmap <buffer> <leader>gr <Plug>(omnisharp_find_usages)
+autocmd FileType csharp nmap <buffer> <leader>gi <Plug>(omnisharp_find_implementations)
+autocmd FileType csharp nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_type_definition)
+autocmd FileType csharp nmap <buffer> <leader>g. <Plug>(omnisharp_code_actions)
+autocmd FileType csharp nmap <buffer> <leader>gh <Plug>(omnisharp_highlight)
+autocmd FileType csharp nmap <buffer> <leader>rn <Plug>(omnisharp_rename)
+autocmd FileType csharp nmap <buffer> <leader>K <Plug>(omnisharp_documentation)
 
 """ machine-specific configuration may be configured in this file
 if filereadable(expand("~/.site_vimrc"))
