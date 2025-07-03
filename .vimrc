@@ -142,7 +142,7 @@ if (executable('clangd'))
 		\ })
 endif
 
-let g:ale_linters = {'cs': ['omnisharp']}
+let g:ale_linters = {'cs': ['OmniSharp']}
 
 " set up vim-lsp keys
 function! s:on_lsp_buffer_enabled() abort
@@ -261,6 +261,7 @@ if filereadable(expand("~/.filetype_vimrc"))
 endif
 
 autocmd FileType csharp call lsp#disable()
+autocmd FileType csharp :LspStopServer
 autocmd FileType csharp nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
 autocmd FileType csharp nmap <buffer> <leader>gs <Plug>(omnisharp_find_symbol)
 autocmd FileType csharp nmap <buffer> <leader>gS <Plug>(omnisharp_find_type)
