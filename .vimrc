@@ -235,18 +235,19 @@ set mouse=a
 " long history for :
 set history=5000
 
-colorscheme onedark
 
 " set a ruler
 set colorcolumn=120
 
 set syntax=on
+colorscheme onedark
 " show line numbers
 set number
 
 " configure ripgrep as external grep
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat+=%f:%l:%c:%m
+set hidden
 
 " font used by GVim
 set guifont=Cascadia_Mono:h11
