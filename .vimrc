@@ -209,7 +209,9 @@ nnoremap <Space>s<Space>Gs :Grepper<Space>
 
 
 " GDB
-packadd termdebug
+if !has('nvim')
+  packadd termdebug
+endif
 
 " Enable auto save
 set autowrite
