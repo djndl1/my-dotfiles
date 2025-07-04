@@ -244,7 +244,6 @@ set history=5000
 " set a ruler
 set colorcolumn=120
 
-set syntax=on
 colorscheme onedark
 " show line numbers
 set number
