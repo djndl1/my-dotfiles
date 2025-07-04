@@ -1,4 +1,5 @@
 alias git-dotfile='git --git-dir=${HOME}/.dotfiles --work-tree=$HOME'
+alias nvim-vim='nvim -u ~/.vimrc'
 stty stop ''
 
 function java-debug-args {
