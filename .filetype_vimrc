@@ -1,0 +1,21 @@
+autocmd FileType org set spell
+
+autocmd FileType markdown set spell
+
+let g:OmniSharp_server_use_net6 = 1
+function! s:on_csharp_buffer_enabled() abort
+	call lsp#disable()
+ 	:LspStopServer
+ 	nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
+ 	nmap <buffer> <leader>gs <Plug>(omnisharp_find_symbol)
+ 	nmap <buffer> <leader>gS <Plug>(omnisharp_find_type)
+ 	nmap <buffer> <leader>gr <Plug>(omnisharp_find_usages)
+ 	nmap <buffer> <leader>gi <Plug>(omnisharp_find_implementations)
+ 	nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_type_definition)
+ 	nmap <buffer> <leader>g. <Plug>(omnisharp_code_actions)
+ 	nmap <buffer> <leader>gh <Plug>(omnisharp_highlight)
+ 	nmap <buffer> <leader>rn <Plug>(omnisharp_rename)
+ 	nmap <buffer> <leader>K <Plug>(omnisharp_documentation)
+endfunction
+
+autocmd FileType csharp call s:on_csharp_buffer_enabled()

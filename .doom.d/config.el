@@ -55,7 +55,7 @@
 ;;
 ;;
 ;;
-(global-set-key (kbd "C-h-DEL") 'kill-whole-line)
+;;(global-set-key (kbd "C-h-DEL") 'kill-whole-line)
 
 (require 'exec-path-from-shell)
 (exec-path-from-shell-initialize)
@@ -63,6 +63,7 @@
 ;; enable EasyPG encryption
 (require 'epa-file)
 (epa-file-enable)
+(add-to-list 'org-modules 'org-habit)
 (require 'ol-man)
 
 (load! "funcs.el")
