@@ -8,3 +8,12 @@ function java-debug-args {
 export ORACLE_PATH="${HOME}/Oracle/dbs"
 export TNS_ADMIN="${HOME}/Oracle/network/admin"
 
+function org2html {
+	local f
+	local filepath
+	f=$1
+	filepath="${f%.*}"
+	shift
+	pandoc -s --toc -t html  "$@" -o ${filepath}.html ${f}
+}
+
