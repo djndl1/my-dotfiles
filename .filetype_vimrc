@@ -1,4 +1,9 @@
-autocmd FileType org set spell
+
+function! s:on_orgmode() abort
+	set spell
+	iabbrev &zwsp ​
+endfunction
+autocmd FileType org call s:on_orgmode()
 
 autocmd FileType markdown set spell
 
