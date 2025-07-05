@@ -1,11 +1,18 @@
+function! s:common_abbreviations() abort
+	iabbrev teh the
+	iabbrev zwsp ​
+endfunction
 
 function! s:on_orgmode() abort
+	call s:common_abbreviations()
 	set spell
-	iabbrev &zwsp ​
 endfunction
 autocmd FileType org call s:on_orgmode()
 
-autocmd FileType markdown set spell
+function! s:on_markdown() abort
+	set spell
+endfunction
+autocmd FileType md call s:on_markdown()
 
 let g:OmniSharp_server_use_net6 = 1
 function! s:on_csharp_buffer_enabled() abort
