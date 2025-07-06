@@ -5,11 +5,15 @@ endfunction
 
 function! s:on_orgmode() abort
 	call s:common_abbreviations()
+	set linebreak
+	set nowrap
 	set spell
 endfunction
 autocmd FileType org call s:on_orgmode()
 
 function! s:on_markdown() abort
+	set linebreak
+	set nowrap
 	set spell
 endfunction
 autocmd FileType md call s:on_markdown()
