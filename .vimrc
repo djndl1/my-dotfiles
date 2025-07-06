@@ -260,6 +260,9 @@ set clipboard=unnamedplus
 
 runtime! ftplugin/man.vim
 
+" Set up proper encodings
+set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
+
 """ filetype specific settings
 if filereadable(expand("~/.filetype_vimrc"))
 	source ~/.filetype_vimrc
