@@ -89,8 +89,9 @@ Plugin 'easymotion/vim-easymotion'
 " Language Syntax Support
 Plugin 'sheerun/vim-polyglot'
 " Snippet Support
-Plugin 'Shougo/neosnippet.vim'
-Plugin 'Shougo/neosnippet-snippets'
+Plugin 'SirVer/ultisnips'
+" Snippets are separated from the engine. Add this if you want them:
+Plugin 'honza/vim-snippets'
 
 Plugin 'bash-support.vim'
 " Assembly
@@ -207,6 +208,12 @@ nnoremap <Space>sg :GGrep<CR>
 " Grepper mapping
 nnoremap <Space>s<Space>Gs :Grepper<Space>
 
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
 
 " GDB
 if !has('nvim')
