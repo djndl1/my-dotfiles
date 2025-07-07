@@ -147,6 +147,10 @@ let g:ale_linters = {'cs': ['OmniSharp']}
 
 " set up vim-lsp keys
 function! s:on_lsp_buffer_enabled() abort
+    if b:current_syntax == 'cs'
+      return
+    endif
+
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
