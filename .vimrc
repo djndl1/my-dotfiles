@@ -62,6 +62,7 @@ Plugin 'prabirshrestha/vim-lsp'
 Plugin 'OmniSharp/Omnisharp-vim'
 " C#
 Plugin 'nickspoons/vim-cs'
+Plugin 'heaths/vim-msbuild'
 " integrate lsp with ALE
 Plugin 'rhysd/vim-lsp-ale'
 " automatically setup lsp servers
