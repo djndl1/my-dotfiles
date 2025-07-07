@@ -60,6 +60,8 @@ Plugin 'dense-analysis/ale'
 " lsp support
 Plugin 'prabirshrestha/vim-lsp'
 Plugin 'OmniSharp/Omnisharp-vim'
+" C#
+Plugin 'nickspoons/vim-cs'
 " integrate lsp with ALE
 Plugin 'rhysd/vim-lsp-ale'
 " automatically setup lsp servers
