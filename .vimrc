@@ -131,8 +131,8 @@ if v:version >= 910
   " easy comment :h comment.txt
   packadd! comment
   " auotmatically turn off search hightlight 
-  packadd! nohlsearch
 endif
+packadd! nohlsearch
 """ 
 
 map <C-n> :NERDTreeToggle<CR>
@@ -147,6 +147,7 @@ if (executable('clangd'))
 endif
 
 let g:ale_linters = {'cs': ['OmniSharp']}
+let g:ale_virtualtext_cursor = 'current'
 
 " set up vim-lsp keys
 function! s:on_lsp_buffer_enabled() abort
