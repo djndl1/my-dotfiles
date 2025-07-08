@@ -147,6 +147,7 @@ if (executable('clangd'))
 endif
 
 let g:ale_linters = {'cs': ['OmniSharp']}
+let g:ale_virtualtext_cursor = 'current'
 
 " set up vim-lsp keys
 function! s:on_lsp_buffer_enabled() abort
