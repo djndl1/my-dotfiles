@@ -131,8 +131,8 @@ if v:version >= 910
   " easy comment :h comment.txt
   packadd! comment
   " auotmatically turn off search hightlight 
-  packadd! nohlsearch
 endif
+packadd! nohlsearch
 """ 
 
 map <C-n> :NERDTreeToggle<CR>
