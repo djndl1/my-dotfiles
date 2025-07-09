@@ -1,5 +1,6 @@
 function! s:common_abbreviations() abort
 	iabbrev teh the
+  iabbrev wiht with
 	iabbrev zwsp ​
 endfunction
 
