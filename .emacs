@@ -20,6 +20,7 @@
 (straight-use-package 'doom-themes)
 (straight-use-package 'magit)
 (straight-use-package 'projectile)
+(straight-use-package 'sly)
 
 (use-package doom-themes
   :ensure nil
