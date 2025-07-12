@@ -2,6 +2,8 @@ alias git-dotfile='git --git-dir=${HOME}/.dotfiles --work-tree=$HOME'
 alias nvim-vim='nvim -u ~/.vimrc'
 alias emacs='TERM=xterm-kitty emacs'
 alias emacsclient='TERM=xterm-kitty emacsclient'
+alias emacs-home='TERM=xterm-kitty emacs --init-directory=${HOME}'
+
 
 stty stop ''
 
