@@ -1,4 +1,4 @@
-""" Vundle
+" Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -135,6 +135,9 @@ endif
 packadd! nohlsearch
 """ 
 
+let mapleader = ' '
+
+
 map <C-n> :NERDTreeToggle<CR>
 
 "register LSP server
@@ -203,20 +206,19 @@ command! -bang -nargs=* GGrep
       \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
 
 " search for files
-nnoremap <Space><Space> :Files<CR>
+nnoremap <Leader>sf :Files<CR>
 " search for lines
-nnoremap <Space>ss :BLines<CR>
+nnoremap <Leader>ss :BLines<CR>
 " ripgrep in the current directory
-nnoremap <Space>sp :Rg<CR>
+nnoremap <Leader>sp :Rg<CR>
 " git ls-files
-nnoremap <Space>g<Space> :GFiles<CR>
+nnoremap <Leader>g<Leader> :GFiles<CR>
 " search for tags in the current directory
-nnoremap <Space>tp :Tags<CR>
+nnoremap <Leader>tp :Tags<CR>
 " git grep
-nnoremap <Space>sg :GGrep<CR>
-
+nnoremap <Leader>sg :GGrep<CR>
 " Grepper mapping
-nnoremap <Space>s<Space>Gs :Grepper<Space>
+nnoremap <Leader>sG :Grepper<Space>
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
