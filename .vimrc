@@ -146,6 +146,8 @@ if (executable('clangd'))
 		\ })
 endif
 
+let g:lsp_use_native_client = 1
+
 let g:ale_linters = {'cs': ['OmniSharp']}
 let g:ale_virtualtext_cursor = 'disabled'
 
