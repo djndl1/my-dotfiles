@@ -13,6 +13,9 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'will133/vim-dirdiff'
 
+" conditionally toggle relativenumber for fast cursor motion
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+
 " The following are examples of different formats supported.
 " Keep Plugin commands between vundle#begin/end.
 " plugin on GitHub repo
@@ -261,7 +264,7 @@ set mouse=a
 " long history for :
 set history=5000
 
-
+set linebreak
 " set a ruler
 set colorcolumn=120
 
