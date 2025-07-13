@@ -1,6 +1,11 @@
 function! s:common_abbreviations() abort
 	iabbrev teh the
+  iabbrev adn and
   iabbrev wiht with
+  iabbrev waht what
+  iabbrev tehn then
+  iabbrev wehn when
+
 	iabbrev zwsp ​
 endfunction
 
