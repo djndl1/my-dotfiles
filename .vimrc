@@ -241,6 +241,11 @@ endif
 set autowrite
 let g:auto_save = 1
 
+" Insert mode custom mapping (Emacs-style)
+imap <C-b> <Left>
+imap <C-f> <Right>
+cmap <C-b> <Left>
+cmap <C-f> <Right>
 
 """ Other customization
 set incsearch
