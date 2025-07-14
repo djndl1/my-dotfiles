@@ -169,6 +169,7 @@ let g:ale_virtualtext_cursor = 'disabled'
 
 " set up vim-lsp keys
 function! s:on_lsp_buffer_enabled() abort
+    autocmd!
     if b:current_syntax == 'cs'
       return
     endif
@@ -201,7 +202,7 @@ function! s:on_lsp_buffer_enabled() abort
 endfunction
 
 augroup lsp_install
-    au!
+    autocmd!
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
