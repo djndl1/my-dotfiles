@@ -1,3 +1,9 @@
+if !exists('$MYVIMRC')
+    let $MYVIMRC = '~/.vimrc'
+endif
+if !exists('$MYVIMDIR')
+    let $MYVIMDIR = '~/.vim'
+endif
 " Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
@@ -79,6 +85,8 @@ Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 Plugin 'ludovicchabant/vim-gutentags'
 " display tags
 Plugin 'preservim/tagbar'
+"Debugger
+Plugin 'puremourning/vimspector'
 " Orgmode support
 Plugin 'jceb/vim-orgmode'
 " Markdown support
@@ -197,6 +205,9 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+
+" Set up vimspector for debugging
+let g:vimspector_enable_mappings = 'HUMAN'
 
 " set up asynccomplete
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
