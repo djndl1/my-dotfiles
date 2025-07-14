@@ -277,7 +277,6 @@ set mouse=a
 " long history for :
 set history=5000
 
-set linebreak
 " set a ruler
 set colorcolumn=120
 

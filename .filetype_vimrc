@@ -26,6 +26,7 @@ autocmd FileType md call s:on_markdown()
 
 let g:OmniSharp_server_use_net6 = 1
 function! s:on_csharp_buffer_enabled() abort
+  set nowrap nolinebreak
  	nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
  	nmap <buffer> <leader>gs <Plug>(omnisharp_find_symbol)
  	nmap <buffer> <leader>gS <Plug>(omnisharp_find_type)
@@ -36,6 +37,7 @@ function! s:on_csharp_buffer_enabled() abort
  	nmap <buffer> <leader>gh <Plug>(omnisharp_highlight)
  	nmap <buffer> <leader>rn <Plug>(omnisharp_rename)
  	nmap <buffer> <leader>K <Plug>(omnisharp_documentation)
+  compiler dotnet
 endfunction
 
 augroup OmniSharpSetup
