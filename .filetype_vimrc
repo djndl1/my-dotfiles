@@ -41,5 +41,6 @@ function! s:on_csharp_buffer_enabled() abort
 endfunction
 
 augroup OmniSharpSetup
+  autocmd!
   autocmd FileType cs call s:on_csharp_buffer_enabled()
 augroup END
