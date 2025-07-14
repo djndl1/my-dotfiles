@@ -88,7 +88,9 @@ Plugin 'preservim/tagbar'
 "Debugger
 Plugin 'puremourning/vimspector'
 " Orgmode support
-Plugin 'jceb/vim-orgmode'
+if !has('nvim')
+  Plugin 'jceb/vim-orgmode'
+endif
 " Markdown support
 Plugin 'plasticboy/vim-markdown'
 
