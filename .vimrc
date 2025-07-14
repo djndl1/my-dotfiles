@@ -208,6 +208,7 @@ augroup END
 
 " Set up vimspector for debugging
 let g:vimspector_enable_mappings = 'HUMAN'
+let g:vimspector_base_dir='~/.vim/bundle/vimspector'
 
 " set up asynccomplete
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
@@ -262,8 +263,6 @@ inoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 
-inoremap <Esc> <nop>
-inoremap <C-[> <nop>
 inoremap jk <Esc>
 
 """ Other customization
