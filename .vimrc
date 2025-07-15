@@ -267,9 +267,9 @@ let g:auto_save = 1
 map <C-n> :NERDTreeToggle<CR>
 
 " edit certain files.
-nnoremap <Leader>evrc :tabe $MYVIMRC<Enter>
-nnoremap <Leader>efvrc :tabe ~/.filetype_vimrc<Enter>
-nnoremap <Leader>esvrc :tabe ~/.site_vimrc<Enter>
+nnoremap <Leader>ev :tabe $MYVIMRC<Enter>
+nnoremap <Leader>efv :tabe ~/.filetype_vimrc<Enter>
+nnoremap <Leader>esv :tabe ~/.site_vimrc<Enter>
 " Insert mode custom mapping (Emacs-style)
 inoremap <C-b> <Left>
 inoremap <C-f> <Right>
