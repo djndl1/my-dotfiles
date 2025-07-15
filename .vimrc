@@ -1,3 +1,5 @@
+let mapleader = ' '
+
 if !exists('$MYVIMRC')
     let $MYVIMRC = '~/.vimrc'
 endif
@@ -152,7 +154,9 @@ if v:version >= 910
   packadd! comment
   " auotmatically turn off search hightlight 
 endif
-packadd! nohlsearch
+if v:version >= 910 || has('nvim')
+  packadd! nohlsearch
+endif
 """ }}} 
 
 " {{{ LSP, DAP, Linting
@@ -259,8 +263,6 @@ let g:UltiSnipsEditSplit="vertical"
 " Enable auto save
 set autowrite
 let g:auto_save = 1
-
-let mapleader = ' '
 
 map <C-n> :NERDTreeToggle<CR>
 
