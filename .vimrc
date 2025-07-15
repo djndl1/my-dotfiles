@@ -8,6 +8,7 @@ endif
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
+" {{{ Vundle
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -148,13 +149,9 @@ if v:version >= 910
   " auotmatically turn off search hightlight 
 endif
 packadd! nohlsearch
-""" 
+""" }}} 
 
-let mapleader = ' '
-
-
-map <C-n> :NERDTreeToggle<CR>
-
+" {{{ LSP, DAP, Linting
 "register LSP server
 if (executable('clangd'))
 	au user lsp_setup call lsp#register_server({
@@ -213,11 +210,17 @@ augroup END
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_base_dir='~/.vim/bundle/vimspector'
 
+" GDB
+if !has('nvim')
+  packadd termdebug
+endif
+
 " set up asynccomplete
 inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
-
+"}}}
+" {{{ Search keys
 " FZF mapping
 
 command! -bang -nargs=* GGrep
@@ -239,6 +242,7 @@ nnoremap <Leader>tp :Tags<CR>
 nnoremap <Leader>sg :GGrep<CR>
 " Grepper mapping
 nnoremap <Leader>sG :Grepper<Space>
+"}}}
 
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
@@ -247,14 +251,14 @@ let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 " If you want :UltiSnipsEdit to split your window.
 let g:UltiSnipsEditSplit="vertical"
 
-" GDB
-if !has('nvim')
-  packadd termdebug
-endif
-
+""" {{{Custom key mapping
 " Enable auto save
 set autowrite
 let g:auto_save = 1
+
+let mapleader = ' '
+
+map <C-n> :NERDTreeToggle<CR>
 
 " edit certain files.
 nnoremap <Leader>evrc :tabe $MYVIMRC<Enter>
@@ -267,14 +271,14 @@ cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 
 inoremap jk <Esc>
-
+"}}}
+""" {{{ miscelaneous
 """ Other customization
 set incsearch
 set hlsearch " highlight the previous search. turn off the current highlight with :nohlsearch
 
 " directory local
 set exrc
-
 
 " show cursor status
 set ruler
@@ -311,7 +315,8 @@ runtime! ftplugin/man.vim
 
 " Set up proper encodings
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1
-
+"}}}
+" {{{ source other scripts
 """ filetype specific settings
 if filereadable(expand("~/.filetype_vimrc"))
 	source ~/.filetype_vimrc
@@ -321,3 +326,4 @@ endif
 if filereadable(expand("~/.site_vimrc"))
 	source ~/.site_vimrc
 endif
+"}}}
