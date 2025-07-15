@@ -4,6 +4,10 @@ endif
 if !exists('$MYVIMDIR')
     let $MYVIMDIR = '~/.vim'
 endif
+if has('nvim')
+    set rtp+=~/.vim/after
+    set rtp+=~/.vim/ftplugin
+endif
 " Vundle
 set nocompatible              " be iMproved, required
 filetype off                  " required
