@@ -303,6 +303,8 @@ set history=5000
 " set a ruler
 set colorcolumn=120
 
+" true colors and one dark
+set termguicolors
 colorscheme onedark
 " show line numbers
 set number
