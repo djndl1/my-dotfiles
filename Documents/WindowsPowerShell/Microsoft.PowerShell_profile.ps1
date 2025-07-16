@@ -1,12 +1,16 @@
 cd ~
 
- Set-PSReadLineOption -EditMode Emacs
+Set-PSReadLineOption -EditMode Emacs
 
-Del Alias:curl
-Del Alias:wget
+Del Alias:curl -ErrorAction SilentlyContinue
+Del Alias:wget -ErrorAction SilentlyContinue
+
+Function git-dotfile {
+	        git --git-dir=$Env:HOME/.dotfiles --work-tree=$env:HOME $Args 
+}
 
  Function Set-HongKong-Proxy {
-	 $Local:HongkongProxy='http://xxx:xxx@mytencent:8888'
+	 $Local:HongkongProxy='http://djn:freebird@43.128.11.210:8888'
 	 $Env:http_proxy=$Local:HongkongProxy
 	 $Env:https_proxy=$Local:HongkongProxy
  }
@@ -14,4 +18,12 @@ Del Alias:wget
  Function Unset-Proxy {
 	 $Env:http_proxy=$Null
 	 $Env:https_proxy=$Null
+ }
+
+ Function nvim-vim {
+	nvim -u ~/.vimrc
+ }
+
+ Function nvim-qt-vim {
+	nvim-qt -- -u ~/.vimrc
  }
