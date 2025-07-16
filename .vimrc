@@ -81,6 +81,8 @@ Plugin 'OmniSharp/Omnisharp-vim'
 " C#
 Plugin 'nickspoons/vim-cs'
 Plugin 'heaths/vim-msbuild'
+" Common Lisp
+Plugin 'vlime/vlime', {'rtp': 'vim/'}
 " integrate lsp with ALE
 Plugin 'rhysd/vim-lsp-ale'
 " automatically setup lsp servers
@@ -160,15 +162,6 @@ endif
 """ }}} 
 
 " {{{ LSP, DAP, Linting
-"register LSP server
-if (executable('clangd'))
-	au user lsp_setup call lsp#register_server({
-		\ 'name': 'clangd',
-		\	'cmd': { server_info -> ['clangd']},
-		\	'allowlist': ['c', 'cpp', 'cxx', 'cc']
-		\ })
-endif
-
 let g:lsp_use_native_client = 1
 
 let g:ale_linters = {'cs': ['OmniSharp']}
@@ -217,6 +210,14 @@ augroup END
 " Set up vimspector for debugging
 let g:vimspector_enable_mappings = 'HUMAN'
 let g:vimspector_base_dir='~/.vim/bundle/vimspector'
+
+" Common Lisp
+if !executable('sbcl') && executable('ecl')
+    let g:vlime_cl_impl='ecl'
+    function! VlimeBuildServerCommandFor_ecl(vlime_loader, vlime_eval)
+        return ['ecl', '--load', a:vlime_loader, '--eval', a:vlime_eval]
+    endfunction
+endif
 
 " GDB
 if !has('nvim')
