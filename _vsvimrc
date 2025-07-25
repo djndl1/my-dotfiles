@@ -1,0 +1,24 @@
+set clipboard=autoselect
+set incsearch
+set hlsearch
+set ignorecase
+set expandtab
+set smartcase
+set relativenumber
+
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+
+inoremap jk <Esc>
+
+nmap <Space>gd :vsc Edit.GoToDefinition<CR>
+nmap <Space>gr :vsc Edit.FindAllReferences<CR>
+nmap <Space>g. :vsc Edit.NextSuggestion<CR>
+nnoremap <Space>gi :vsc Edit.GoToImplementation<CR>
+nmap <Space>rn :vsc Refactor.Rename<CR>
+nnoremap <Space>sf :vsc Edit.GoToFile<CR>
+nnoremap <Space>ss :vsc Edit.Find<CR>
+nnoremap <Space>sp :vsc Edit.FindinFiles<CR>
+nnoremap <Space>tp :vsc Edit.GoToAll<CR>
