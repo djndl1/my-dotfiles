@@ -15,6 +15,7 @@ inoremap jk <Esc>
 
 nmap <Space>gd :vsc Edit.GoToDefinition<CR>
 nmap <Space>gr :vsc Edit.FindAllReferences<CR>
+nmap <Space>gf :vsc Edit.FormatDocument<CR>
 nmap <Space>g. :vsc Edit.NextSuggestion<CR>
 nnoremap <Space>gi :vsc Edit.GoToImplementation<CR>
 nmap <Space>rn :vsc Refactor.Rename<CR>
