@@ -22,6 +22,9 @@
 (straight-use-package 'projectile)
 (straight-use-package 'sly)
 
+(setq display-line-numbers-mode 'relative)
+(global-display-line-numbers-mode 1)
+
 (use-package doom-themes
   :ensure nil
   :custom
@@ -47,7 +50,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- )
+ '(safe-local-variable-values '((org-cite-csl-styles-dir . "~/Notes/CSNotes/resources/"))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
