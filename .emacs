@@ -24,6 +24,7 @@
 
 (setq display-line-numbers-mode 'relative)
 (global-display-line-numbers-mode 1)
+(electric-pair-mode 1)
 
 (use-package doom-themes
   :ensure nil
