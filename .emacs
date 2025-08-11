@@ -25,6 +25,8 @@
 (setq display-line-numbers-mode 'relative)
 (global-display-line-numbers-mode 1)
 (electric-pair-mode 1)
+(hl-line-mode)
+(setq completion-styles '(basic partial-completion flex))
 
 (use-package doom-themes
   :ensure nil
