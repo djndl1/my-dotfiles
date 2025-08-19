@@ -1,5 +1,8 @@
 let mapleader = ' '
 
+" directory local
+set exrc
+
 if !exists('$MYVIMRC')
     let $MYVIMRC = '~/.vimrc'
 endif
@@ -25,6 +28,7 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'will133/vim-dirdiff'
+Plugin 'embear/vim-localvimrc'
 
 " conditionally toggle relativenumber for fast cursor motion
 Plugin 'jeffkreeftmeijer/vim-numbertoggle'
@@ -284,8 +288,6 @@ inoremap jk <Esc>
 set incsearch
 set hlsearch " highlight the previous search. turn off the current highlight with :nohlsearch
 
-" directory local
-set exrc
 
 " show cursor status
 set ruler
