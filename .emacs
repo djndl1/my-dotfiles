@@ -22,6 +22,7 @@
 (straight-use-package 'projectile)
 (straight-use-package 'sly)
 
+(keyboard-translate ?\C-h ?\C-?) ; translate C-h to backspace
 (setq display-line-numbers-mode 'relative)
 (global-display-line-numbers-mode 1)
 (electric-pair-mode 1)
