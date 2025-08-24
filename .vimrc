@@ -135,6 +135,8 @@ Plugin 'neomake/neomake'
 
 Plugin 'https://gitlab.com/HiPhish/info.vim'
 
+Plugin 'tpope/vim-dadbod'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " three options on, required
