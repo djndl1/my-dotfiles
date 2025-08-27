@@ -256,7 +256,8 @@ nnoremap <Leader>tp :Tags<CR>
 " git grep
 nnoremap <Leader>sg :GGrep<CR>
 " Grepper mapping
-let g:grepper.tools = ['rg', 'grep', 'git']
+runtime plugin/grepper.vim
+let g:grepper['tools'] = ['rg', 'grep', 'git']
 nnoremap <Leader>sG :Grepper<Space>
 "}}}
 
