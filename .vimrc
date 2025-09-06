@@ -71,13 +71,13 @@ Plugin 'junegunn/fzf'
 Plugin 'junegunn/fzf.vim'
 Plugin 'mhinz/vim-grepper'
 "
-"" Git diff
+" Git diff
 Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-speeddating'
 "
-"" a status/tabline
+" a status/tabline
 Plugin 'vim-airline/vim-airline'
-"" Linter
+" Linter
 Plugin 'dense-analysis/ale'
 " lsp support
 Plugin 'prabirshrestha/vim-lsp'
@@ -176,10 +176,11 @@ let g:ale_virtualtext_cursor = 'disabled'
 " set up vim-lsp keys
 function! s:on_lsp_buffer_enabled() abort
     autocmd!
-    if b:current_syntax == 'cs'
+    if exists('b:current_syntax') && b:current_syntax == 'cs'
       return
     endif
 
+    syntax on
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
     if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
@@ -195,8 +196,6 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> <leader>[g <plug>(lsp-previous-diagnostic)
     nmap <buffer> <leader>]g <plug>(lsp-next-diagnostic)
     nmap <buffer> <leader>K <plug>(lsp-hover)
-		nmap <expr><buffer> <c-d> popup_list()->empty() ? '<c-d>' : lsp#scroll(+4)
-    nmap <expr><buffer> <c-u> popup_list()->empty() ? '<c-u>' : lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
 	  let g:lsp_diagnostics_enabled = 1
@@ -321,7 +320,7 @@ set grepformat+=%f:%l:%c:%m
 set hidden
 
 " X11 * clipboard, + Windows clipboard
-set clipboard=unnamedplus
+set clipboard+=unnamedplus
 
 runtime! ftplugin/man.vim
 
