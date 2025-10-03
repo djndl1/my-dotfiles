@@ -317,7 +317,6 @@ set number
 " configure ripgrep as external grep
 set grepprg=rg\ --vimgrep\ --no-heading\ --smart-case
 set grepformat+=%f:%l:%c:%m
-set hidden
 
 " X11 * clipboard, + Windows clipboard
 set clipboard+=unnamedplus
