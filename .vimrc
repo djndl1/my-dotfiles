@@ -162,7 +162,7 @@ if v:version >= 910
   packadd! comment
   " auotmatically turn off search hightlight 
 endif
-if v:version >= 910 || has('nvim')
+if v:version >= 910 || has('nvim-0.11')
   packadd! nohlsearch
 endif
 """ }}} 
