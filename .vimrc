@@ -173,6 +173,14 @@ let g:lsp_use_native_client = 1
 let g:ale_linters = {'cs': ['OmniSharp']}
 let g:ale_virtualtext_cursor = 'disabled'
 
+if executable('vala-language-server')
+  au User lsp_setup call lsp#register_server({
+        \ 'name': 'vala-language-server',
+        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'vala-language-server']},
+        \ 'whitelist': ['vala', 'genie'],
+        \ })
+endif
+
 " set up vim-lsp keys
 function! s:on_lsp_buffer_enabled() abort
     autocmd!
