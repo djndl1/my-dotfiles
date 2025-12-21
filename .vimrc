@@ -115,6 +115,13 @@ Plugin 'ludovicchabant/vim-gutentags'
 Plugin 'preservim/tagbar'
 "Debugger
 Plugin 'puremourning/vimspector'
+if has('nvim')
+    Plugin 'mfussenegger/nvim-dap'
+    Plugin 'mfussenegger/nvim-dap-python'
+    Plugin 'mfussenegger/nvim-dap-go'
+    Plugin 'nvim-neotest/nvim-nio'
+    Plugin 'rcarriga/nvim-dap-ui'
+endif
 " Orgmode support
 if !has('nvim')
   Plugin 'jceb/vim-orgmode'
@@ -184,58 +191,58 @@ endif
 
 " {{{ LSP, DAP, Linting
 
-let g:ale_linters = {'cs': ['OmniSharp']}
+let g:ale_linters = {'cs': ['lsp']}
 let g:ale_virtualtext_cursor = 'disabled'
 
 if !has('nvim')
-let g:lsp_use_native_client = 1
-
-if executable('vala-language-server')
-  au User lsp_setup call lsp#register_server({
-        \ 'name': 'vala-language-server',
-        \ 'cmd': {server_info->[&shell, &shellcmdflag, 'vala-language-server']},
-        \ 'whitelist': ['vala', 'genie'],
-        \ })
-endif
-
-" set up vim-lsp keys
-function! s:on_lsp_buffer_enabled() abort
-    autocmd!
-    if exists('b:current_syntax') && b:current_syntax == 'cs'
-      return
+    let g:lsp_use_native_client = 1
+    
+    if executable('vala-language-server')
+      au User lsp_setup call lsp#register_server({
+            \ 'name': 'vala-language-server',
+            \ 'cmd': {server_info->[&shell, &shellcmdflag, 'vala-language-server']},
+            \ 'whitelist': ['vala', 'genie'],
+            \ })
     endif
-
-    syntax on
-    setlocal omnifunc=lsp#complete
-    setlocal signcolumn=yes
-    if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
-    nmap <buffer> <leader>gd <plug>(lsp-definition)
-    nmap <buffer> <leader>gs <plug>(lsp-document-symbol-search)
-    nmap <buffer> <leader>gS <plug>(lsp-workspace-symbol-search)
-    nmap <buffer> <leader>gr <plug>(lsp-references)
-    nmap <buffer> <leader>gi <plug>(lsp-implementation)
-    nmap <buffer> <leader>gd <plug>(lsp-type-definition)
-    nmap <buffer> <leader>g. <plug>(lsp-code-action)
-    nmap <buffer> <leader>gD :LspDocumentDiagnostics<Enter>
-    nmap <buffer> <leader>rn <plug>(lsp-rename)
-    nmap <buffer> <leader>[g <plug>(lsp-previous-diagnostic)
-    nmap <buffer> <leader>]g <plug>(lsp-next-diagnostic)
-    nmap <buffer> <leader>K <plug>(lsp-hover)
-
-    let g:lsp_format_sync_timeout = 1000
-	  let g:lsp_diagnostics_enabled = 1
-	  let g:lsp_diagnostics_echo_cursor = 1
-	  let g:lsp_diagnostics_float_cursor = 1
-    autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-    " refer to doc to add more commands
-endfunction
-
-augroup lsp_install
-    autocmd!
-    " call s:on_lsp_buffer_enabled only for languages that has the server registered.
-    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
-augroup END
+    
+    " set up vim-lsp keys
+    function! s:on_lsp_buffer_enabled() abort
+        autocmd!
+        if exists('b:current_syntax') && b:current_syntax == 'cs'
+          return
+        endif
+    
+        syntax on
+        setlocal omnifunc=lsp#complete
+        setlocal signcolumn=yes
+        if exists('+tagfunc') | setlocal tagfunc=lsp#tagfunc | endif
+        nmap <buffer> <leader>gd <plug>(lsp-definition)
+        nmap <buffer> <leader>gs <plug>(lsp-document-symbol-search)
+        nmap <buffer> <leader>gS <plug>(lsp-workspace-symbol-search)
+        nmap <buffer> <leader>gr <plug>(lsp-references)
+        nmap <buffer> <leader>gi <plug>(lsp-implementation)
+        nmap <buffer> <leader>gd <plug>(lsp-type-definition)
+        nmap <buffer> <leader>g. <plug>(lsp-code-action)
+        nmap <buffer> <leader>gD :LspDocumentDiagnostics<Enter>
+        nmap <buffer> <leader>rn <plug>(lsp-rename)
+        nmap <buffer> <leader>[g <plug>(lsp-previous-diagnostic)
+        nmap <buffer> <leader>]g <plug>(lsp-next-diagnostic)
+        nmap <buffer> <leader>K <plug>(lsp-hover)
+    
+        let g:lsp_format_sync_timeout = 1000
+    	  let g:lsp_diagnostics_enabled = 1
+    	  let g:lsp_diagnostics_echo_cursor = 1
+    	  let g:lsp_diagnostics_float_cursor = 1
+        autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
+    
+        " refer to doc to add more commands
+    endfunction
+    
+    augroup lsp_install
+        autocmd!
+        " call s:on_lsp_buffer_enabled only for languages that has the server registered.
+        autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+    augroup END
 endif
 
 " Set up vimspector for debugging

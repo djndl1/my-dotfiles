@@ -33,6 +33,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
     bufmap('n', '<leader>grt', '<cmd>lua vim.lsp.buf.type_definition()<cr>')
     bufmap('n', '<leader>grd', '<cmd>lua vim.lsp.buf.declaration()<cr>')
     bufmap({'n', 'x'}, '<leader>gf', '<cmd>lua vim.lsp.buf.format({async = true})<cr>')
+    bufmap({'n'}, '<leader>gl', '<cmd>lua vim.diagnostic.setloclist()<cr>')
   end,
 })
 
@@ -47,3 +48,4 @@ vim.keymap.set('n', '<leader>gs', builtin.lsp_document_symbols, { desc = 'Telesc
 vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { desc = 'Telescope LSP References tags' })
 vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, { desc = 'Telescope LSP Implementations tags' })
 vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, { desc = 'Telescope LSP Definitions tags' })
+vim.keymap.set('n', '<leader>ge', builtin.diagnostics, { desc = 'Telescope Current Diagnostics tags' })
