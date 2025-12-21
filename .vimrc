@@ -67,8 +67,13 @@ Plugin '907th/vim-auto-save'
 
 "
 " file/text search
-Plugin 'junegunn/fzf'
-Plugin 'junegunn/fzf.vim'
+if has('nvim')
+    Plugin 'nvim-lua/plenary.nvim'
+    Plugin 'nvim-telescope/telescope.nvim'
+else
+    Plugin 'junegunn/fzf'
+    Plugin 'junegunn/fzf.vim'
+endif
 Plugin 'mhinz/vim-grepper'
 "
 " Git diff
@@ -79,18 +84,23 @@ Plugin 'tpope/vim-speeddating'
 Plugin 'vim-airline/vim-airline'
 " Linter
 Plugin 'dense-analysis/ale'
+if !has('nvim')
 " lsp support
-Plugin 'prabirshrestha/vim-lsp'
-Plugin 'OmniSharp/Omnisharp-vim'
+    Plugin 'prabirshrestha/vim-lsp'
+    Plugin 'OmniSharp/Omnisharp-vim'
+    " integrate lsp with ALE
+    Plugin 'rhysd/vim-lsp-ale'
+    " automatically setup lsp servers
+    Plugin 'mattn/vim-lsp-settings'
+else
+    Plugin 'mason-org/mason.nvim'
+    Plugin 'neovim/nvim-lspconfig'
+endif
 " C#
 Plugin 'nickspoons/vim-cs'
 Plugin 'heaths/vim-msbuild'
 " Common Lisp
 Plugin 'vlime/vlime', {'rtp': 'vim/'}
-" integrate lsp with ALE
-Plugin 'rhysd/vim-lsp-ale'
-" automatically setup lsp servers
-Plugin 'mattn/vim-lsp-settings'
 " async completion
 Plugin 'prabirshrestha/asyncomplete.vim'
 Plugin 'prabirshrestha/asyncomplete-lsp.vim'
@@ -168,10 +178,12 @@ endif
 """ }}} 
 
 " {{{ LSP, DAP, Linting
-let g:lsp_use_native_client = 1
 
 let g:ale_linters = {'cs': ['OmniSharp']}
 let g:ale_virtualtext_cursor = 'disabled'
+
+if !has('nvim')
+let g:lsp_use_native_client = 1
 
 if executable('vala-language-server')
   au User lsp_setup call lsp#register_server({
@@ -219,6 +231,7 @@ augroup lsp_install
     " call s:on_lsp_buffer_enabled only for languages that has the server registered.
     autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
 augroup END
+endif
 
 " Set up vimspector for debugging
 let g:vimspector_enable_mappings = 'HUMAN'
@@ -242,26 +255,28 @@ inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr>    pumvisible() ? asyncomplete#close_popup() : "\<cr>"
 "}}}
 " {{{ Search keys
+if !has('nvim')
 " FZF mapping
-
-command! -bang -nargs=* GGrep
-      \ call fzf#vim#grep(
-      \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
-      \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
-
-" search for files
-nnoremap <Leader>sf :Files<CR>
-" search for lines
-nnoremap <Leader>ss :BLines<CR>
-" ripgrep in the current directory
-nnoremap <Leader>sp :Rg<CR>
-" git ls-files
-nnoremap <Leader>g<Leader> :GFiles<CR>
-" search for tags in the current directory
-nnoremap <Leader>tp :Tags<CR>
-" git grep
-nnoremap <Leader>sg :GGrep<CR>
+    command! -bang -nargs=* GGrep
+          \ call fzf#vim#grep(
+          \   'git grep --line-number -- '.fzf#shellescape(<q-args>),
+          \   fzf#vim#with_preview({'dir': systemlist('git rev-parse --show-toplevel')[0]}), <bang>0)
+    
+    " search for files
+    nnoremap <Leader>sf :Files<CR>
+    " search for lines
+    nnoremap <Leader>ss :BLines<CR>
+    " ripgrep in the current directory
+    nnoremap <Leader>sp :Rg<CR>
+    " git ls-files
+    nnoremap <Leader>g<Leader> :GFiles<CR>
+    " search for tags in the current directory
+    nnoremap <Leader>tp :Tags<CR>
+    " git grep
+    nnoremap <Leader>sg :GGrep<CR>
+endif
 " Grepper mapping
+"
 runtime plugin/grepper.vim
 let g:grepper['tools'] = ['rg', 'grep', 'git']
 nnoremap <Leader>sG :Grepper<Space>
@@ -345,3 +360,4 @@ if filereadable(expand("~/.site_vimrc"))
 	source ~/.site_vimrc
 endif
 "}}}
+"

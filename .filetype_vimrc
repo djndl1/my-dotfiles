@@ -24,6 +24,8 @@ function! s:on_markdown() abort
 endfunction
 autocmd FileType md call s:on_markdown()
 
+
+if !has('nvim')
 let g:OmniSharp_server_use_net6 = 1
 function! s:on_csharp_buffer_enabled() abort
   setlocal nowrap nolinebreak list nospell
@@ -44,3 +46,6 @@ augroup OmniSharpSetup
   autocmd!
   autocmd FileType cs call s:on_csharp_buffer_enabled()
 augroup END
+else
+
+endif
