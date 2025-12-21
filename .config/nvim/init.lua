@@ -7,6 +7,13 @@ vim.lsp.enable('omnisharp')
 vim.lsp.enable('lua-language-server')
 vim.lsp.enable('jdtls')
 
+vim.lsp.config['vala-language-server'] = {
+  cmd = { 'vala-language-server' },
+  filetypes = { 'vala' }
+}
+
+vim.lsp.enable('vala-language-server')
+
 vim.api.nvim_create_autocmd('LspAttach', {
   callback = function(event)
     local bufmap = function(mode, rhs, lhs)

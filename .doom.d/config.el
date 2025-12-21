@@ -79,7 +79,7 @@
 (require 'dap-netcore)
 (setq dap-auto-configure-features '(sessions locals controls tooltip))
 (setq lsp-csharp-server-path
-      "/home/djn/opt/omnisharp/OmniSharp")
+      "csharp-ls")
 
 (setq dap-netcore-install-dir "/home/djn/opt/netcoredbg/")
 
