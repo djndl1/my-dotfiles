@@ -2,6 +2,7 @@ local vimrc = vim.fn.stdpath('config') .. '/vimrc'
 vim.cmd.source(vimrc)
 
 require("mason").setup()
+require("mason-lspconfig").setup()
 
 vim.lsp.enable('omnisharp')
 vim.lsp.enable('lua-language-server')

@@ -94,6 +94,7 @@ if !has('nvim')
     Plugin 'mattn/vim-lsp-settings'
 else
     Plugin 'mason-org/mason.nvim'
+    Plugin 'mason-org/mason-lspconfig.nvim'
     Plugin 'neovim/nvim-lspconfig'
 endif
 " C#
@@ -102,8 +103,12 @@ Plugin 'heaths/vim-msbuild'
 " Common Lisp
 Plugin 'vlime/vlime', {'rtp': 'vim/'}
 " async completion
-Plugin 'prabirshrestha/asyncomplete.vim'
-Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+if has('nvim')
+    Plugin 'ms-jpq/coq_nvim'
+else
+    Plugin 'prabirshrestha/asyncomplete.vim'
+    Plugin 'prabirshrestha/asyncomplete-lsp.vim'
+endif
 " manage tags file
 Plugin 'ludovicchabant/vim-gutentags'
 " display tags
