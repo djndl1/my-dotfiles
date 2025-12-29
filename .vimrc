@@ -294,7 +294,7 @@ let g:grepper['tools'] = ['rg', 'grep', 'git']
 nnoremap <Leader>sG :Grepper<Space>
 "}}}
 
-let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsExpandTrigger="<C-]>"
 let g:UltiSnipsJumpForwardTrigger="<c-b>"
 let g:UltiSnipsJumpBackwardTrigger="<c-z>"
 
