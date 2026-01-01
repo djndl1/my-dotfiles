@@ -37,15 +37,31 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end,
 })
 
+require('telescope').setup {
+  defaults = {
+      layout_strategy = "vertical",
+      layout_config = {
+        height = 0.8,
+        width = 0.95
+    }
+  }
+}
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>sp', builtin.live_grep, { desc = 'Telescope Live grep' })
-vim.keymap.set('n', '<leader>g<leader>', builtin.git_files, { desc = 'Telescope git ls-files' })
-vim.keymap.set('n', '<leader>ss', builtin.current_buffer_fuzzy_find, { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>tp', builtin.tags, { desc = 'Telescope Tags' })
-vim.keymap.set('n', '<leader>gS', builtin.lsp_workspace_symbols, { desc = 'Telescope WorkSpace Symbols' })
-vim.keymap.set('n', '<leader>gs', builtin.lsp_document_symbols, { desc = 'Telescope Document symbols tags' })
-vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { desc = 'Telescope LSP References tags' })
-vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, { desc = 'Telescope LSP Implementations tags' })
-vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, { desc = 'Telescope LSP Definitions tags' })
-vim.keymap.set('n', '<leader>ge', builtin.diagnostics, { desc = 'Telescope Current Diagnostics tags' })
+vim.keymap.set('n', '<leader>sf', function() builtin.find_files { default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope find files'  })
+vim.keymap.set('n', '<leader>sp', function() builtin.live_grep{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope Live grep' })
+vim.keymap.set('n', '<leader>g<leader>', function() builtin.git_files{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope git ls-files' })
+vim.keymap.set('n', '<leader>ss', function() builtin.current_buffer_fuzzy_find{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>tp', function() builtin.tags{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope Tags' })
+vim.keymap.set('n', '<leader>gS', function() builtin.lsp_workspace_symbols{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope WorkSpace Symbols' })
+vim.keymap.set('n', '<leader>gs', function() builtin.lsp_document_symbols{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope Document symbols tags' })
+vim.keymap.set('n', '<leader>gr', function() builtin.lsp_references{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope LSP References tags' })
+vim.keymap.set('n', '<leader>gi', function() builtin.lsp_implementations{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope LSP Implementations tags' })
+vim.keymap.set('n', '<leader>gd', function() builtin.lsp_definitions{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope LSP Definitions tags' })
+vim.keymap.set('n', '<leader>ge', function() builtin.diagnostics{ default_text = vim.fn.expand("<cword>") } end, { desc = 'Telescope Current Diagnostics tags' })
+
+local config_path = vim.fn.stdpath("config") 
+local site_vimrc_path = config_path .. "/lua/site_vimrc.lua"
+
+if vim.fn.filereadable(site_vimrc_path) ~= 0 then
+  require('site_vimrc')
+end
