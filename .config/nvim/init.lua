@@ -4,7 +4,12 @@ vim.cmd.source(vimrc)
 require("mason").setup()
 require("mason-lspconfig").setup()
 
-vim.g.coq_settings = { ['auto_start'] = true }
+vim.g.coq_settings = { 
+  ['auto_start'] = true ,
+  keymap = { 
+    pre_select = true
+  }
+}
 require("coq")
 
 vim.lsp.enable('omnisharp')
