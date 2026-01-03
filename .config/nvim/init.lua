@@ -1,6 +1,8 @@
 local vimrc = vim.fn.stdpath('config') .. '/vimrc'
 vim.cmd.source(vimrc)
 
+vim.g.gutentags_project_root = {'.project_root'}
+
 require("mason").setup()
 require("mason-lspconfig").setup()
 
@@ -114,19 +116,21 @@ vim.keymap.set('n', '<leader>ss',
   { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>tp', function() builtin.tags { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope Tags' })
+vim.keymap.set('n', '<leader>ts', function() builtin.current_buffer_tags { ctags_file = 'ctags', default_text = vim.fn.expand("<cword>") } end,
+  { desc = 'Current Buffer Tags' })
 vim.keymap.set('n', '<leader>gS',
   function() builtin.lsp_workspace_symbols { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope WorkSpace Symbols' })
 vim.keymap.set('n', '<leader>gs', function() builtin.lsp_document_symbols { default_text = vim.fn.expand("<cword>") } end,
-  { desc = 'Telescope Document symbols tags' })
+  { desc = 'Telescope Document symbols ' })
 vim.keymap.set('n', '<leader>gr', function() builtin.lsp_references { default_text = vim.fn.expand("<cword>") } end,
-  { desc = 'Telescope LSP References tags' })
+  { desc = 'Telescope LSP References ' })
 vim.keymap.set('n', '<leader>gi', function() builtin.lsp_implementations { default_text = vim.fn.expand("<cword>") } end,
-  { desc = 'Telescope LSP Implementations tags' })
+  { desc = 'Telescope LSP Implementations ' })
 vim.keymap.set('n', '<leader>gd', function() builtin.lsp_definitions { default_text = vim.fn.expand("<cword>") } end,
-  { desc = 'Telescope LSP Definitions tags' })
+  { desc = 'Telescope LSP Definitions ' })
 vim.keymap.set('n', '<leader>ge', function() builtin.diagnostics { default_text = vim.fn.expand("<cword>") } end,
-  { desc = 'Telescope Current Diagnostics tags' })
+  { desc = 'Telescope Current Diagnostics ' })
 
 local config_path = vim.fn.stdpath("config")
 local site_vimrc_path = config_path .. "/lua/site_vimrc.lua"
@@ -134,3 +138,5 @@ local site_vimrc_path = config_path .. "/lua/site_vimrc.lua"
 if vim.fn.filereadable(site_vimrc_path) ~= 0 then
   require('site_vimrc')
 end
+
+
