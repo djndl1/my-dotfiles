@@ -29,21 +29,22 @@ function! s:on_c_cpp() abort
 endfunction
 autocmd FileType c call s:on_c_cpp()
 autocmd FileType cpp call s:on_c_cpp()
+autocmd FileType cs call s:on_csharp_buffer_enabled()
 
-if !has('nvim')
-let g:OmniSharp_server_use_net6 = 1
 function! s:on_csharp_buffer_enabled() abort
   setlocal nowrap nolinebreak list nospell
- 	nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
- 	nmap <buffer> <leader>gs <Plug>(omnisharp_find_symbol)
- 	nmap <buffer> <leader>gS <Plug>(omnisharp_find_type)
- 	nmap <buffer> <leader>gr <Plug>(omnisharp_find_usages)
- 	nmap <buffer> <leader>gi <Plug>(omnisharp_find_implementations)
- 	nmap <buffer> <leader>g. <Plug>(omnisharp_code_actions)
- 	nmap <buffer> <leader>gf <Plug>(omnisharp_code_format)
- 	nmap <buffer> <leader>gh <Plug>(omnisharp_highlight)
- 	nmap <buffer> <leader>rn <Plug>(omnisharp_rename)
- 	nmap <buffer> <leader>K <Plug>(omnisharp_documentation)
+  if !has('nvim')
+   	nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
+   	nmap <buffer> <leader>gs <Plug>(omnisharp_find_symbol)
+   	nmap <buffer> <leader>gS <Plug>(omnisharp_find_type)
+   	nmap <buffer> <leader>gr <Plug>(omnisharp_find_usages)
+   	nmap <buffer> <leader>gi <Plug>(omnisharp_find_implementations)
+   	nmap <buffer> <leader>g. <Plug>(omnisharp_code_actions)
+   	nmap <buffer> <leader>gf <Plug>(omnisharp_code_format)
+   	nmap <buffer> <leader>gh <Plug>(omnisharp_highlight)
+   	nmap <buffer> <leader>rn <Plug>(omnisharp_rename)
+   	nmap <buffer> <leader>K <Plug>(omnisharp_documentation)
+  endif
   compiler dotnet
 endfunction
 
@@ -51,6 +52,4 @@ augroup OmniSharpSetup
   autocmd!
   autocmd FileType cs call s:on_csharp_buffer_enabled()
 augroup END
-else
 
-endif

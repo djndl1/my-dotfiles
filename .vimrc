@@ -51,6 +51,7 @@ Plugin 'tpope/vim-fugitive'
 " Plugin 'ascenator/L9', {'name': 'newL9'}
 
 " colorschemes
+Plugin 'sainnhe/sonokai'
 Plugin 'glepnir/oceanic-material'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'sickill/vim-monokai'
@@ -74,6 +75,7 @@ else
     Plugin 'junegunn/fzf'
     Plugin 'junegunn/fzf.vim'
 endif
+Plugin 'pechorin/any-jump.vim'
 Plugin 'mhinz/vim-grepper'
 "
 " Git diff
@@ -104,6 +106,13 @@ Plugin 'heaths/vim-msbuild'
 Plugin 'vlime/vlime', {'rtp': 'vim/'}
 " async completion
 if has('nvim')
+    Plugin 'hrsh7th/cmp-nvim-lsp'
+    Plugin 'hrsh7th/cmp-buffer'
+    Plugin 'hrsh7th/cmp-path'
+    Plugin 'hrsh7th/cmp-cmdline'
+    Plugin 'hrsh7th/nvim-cmp'
+    Plugin 'quangnguyen30192/cmp-nvim-ultisnips'
+    Plugin 'delphinus/cmp-ctags'
     Plugin 'ms-jpq/coq_nvim'
 else
     Plugin 'prabirshrestha/asyncomplete.vim'
@@ -117,9 +126,6 @@ Plugin 'preservim/tagbar'
 Plugin 'puremourning/vimspector'
 if has('nvim')
     Plugin 'mfussenegger/nvim-dap'
-    Plugin 'mfussenegger/nvim-dap-python'
-    Plugin 'mfussenegger/nvim-dap-go'
-    Plugin 'nvim-neotest/nvim-nio'
     Plugin 'rcarriga/nvim-dap-ui'
 endif
 " Orgmode support
@@ -292,6 +298,16 @@ endif
 runtime plugin/grepper.vim
 let g:grepper['tools'] = ['rg', 'grep', 'git']
 nnoremap <Leader>sG :Grepper<Space>
+
+let g:any_jump_disable_default_keybindings = 1
+" Normal mode: Jump to definition under cursor
+nnoremap <leader>j :AnyJump<CR>
+" Visual mode: jump to selected text in visual mode
+xnoremap <leader>j :AnyJumpVisual<CR>
+" Normal mode: open previous opened file (after jump)
+nnoremap <leader>ab :AnyJumpBack<CR>
+" Normal mode: open last closed search window again
+nnoremap <leader>al :AnyJumpLastResults<CR>
 "}}}
 
 let g:UltiSnipsExpandTrigger="<C-]>"
