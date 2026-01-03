@@ -116,8 +116,7 @@ vim.keymap.set('n', '<leader>ss',
   { desc = 'Telescope buffers' })
 vim.keymap.set('n', '<leader>tp', function() builtin.tags { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope Tags' })
-vim.keymap.set('n', '<leader>ts', function() builtin.current_buffer_tags { ctags_file = 'ctags', default_text = vim.fn.expand("<cword>") } end,
-  { desc = 'Current Buffer Tags' })
+vim.keymap.set('n', '<leader>ts', builtin.current_buffer_tags, { desc = 'Current Buffer Tags' })
 vim.keymap.set('n', '<leader>gS',
   function() builtin.lsp_workspace_symbols { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope WorkSpace Symbols' })
