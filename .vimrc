@@ -334,6 +334,8 @@ inoremap <C-f> <Right>
 cnoremap <C-b> <Left>
 cnoremap <C-f> <Right>
 
+nnoremap <leader>tab :tabnew<CR>
+
 inoremap jk <Esc>
 "}}}
 """ {{{ miscelaneous
