@@ -113,7 +113,6 @@ if has('nvim')
     Plugin 'hrsh7th/nvim-cmp'
     Plugin 'quangnguyen30192/cmp-nvim-ultisnips'
     Plugin 'delphinus/cmp-ctags'
-    Plugin 'ms-jpq/coq_nvim'
 else
     Plugin 'prabirshrestha/asyncomplete.vim'
     Plugin 'prabirshrestha/asyncomplete-lsp.vim'
@@ -253,6 +252,18 @@ endif
 
 " Set up vimspector for debugging
 let g:vimspector_enable_mappings = 'HUMAN'
+nmap <Leader><F10> <Plug>VimspectorStepInto
+nmap <Leader>di <Plug>VimspectorBalloonEval
+
+" change indicator signs to ASCII: they may be ugly, but they display!
+sign define vimspectorBP text=O             texthl=WarningMsg
+sign define vimspectorBPCond text=O?        texthl=WarningMsg
+sign define vimspectorBPLog text=!!         texthl=SpellRare
+sign define vimspectorBPDisabled text=O!    texthl=LineNr
+sign define vimspectorPC text=\ >           texthl=MatchParen
+sign define vimspectorPCBP text=o>          texthl=MatchParen
+sign define vimspectorCurrentThread text=>  texthl=MatchParen
+sign define vimspectorCurrentFrame text=>   texthl=Special
 
 " Common Lisp
 if !executable('sbcl') && executable('ecl')
