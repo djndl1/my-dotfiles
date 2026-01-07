@@ -6,14 +6,6 @@ vim.g.gutentags_project_root = {'.project_root'}
 require("mason").setup()
 require("mason-lspconfig").setup()
 
-vim.g.coq_settings = {
-  ['auto_start'] = false,
-  keymap = {
-    pre_select = true
-  }
-}
-require("coq")
-
 local cmp = require 'cmp'
 cmp.setup({
   snippet = {
@@ -105,31 +97,44 @@ require('telescope').setup {
   }
 }
 local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>sf', function() builtin.find_files { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>isf', function() builtin.find_files { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope find files' })
-vim.keymap.set('n', '<leader>sp', function() builtin.live_grep { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>isp', function() builtin.live_grep { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope Live grep' })
-vim.keymap.set('n', '<leader>g<leader>', function() builtin.git_files { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>ig<leader>', function() builtin.git_files { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope git ls-files' })
 vim.keymap.set('n', '<leader>ss',
   function() builtin.current_buffer_fuzzy_find { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope buffers' })
-vim.keymap.set('n', '<leader>tp', function() builtin.tags { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>itp', function() builtin.tags { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope Tags' })
-vim.keymap.set('n', '<leader>ts', builtin.current_buffer_tags, { desc = 'Current Buffer Tags' })
-vim.keymap.set('n', '<leader>gS',
+vim.keymap.set('n', '<leader>its', function() builtin.current_buffer_tags { default_text = vim.fn.expand("<cword>") } end)
+vim.keymap.set('n', '<leader>igS',
   function() builtin.lsp_workspace_symbols { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope WorkSpace Symbols' })
-vim.keymap.set('n', '<leader>gs', function() builtin.lsp_document_symbols { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>igs', function() builtin.lsp_document_symbols { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope Document symbols ' })
-vim.keymap.set('n', '<leader>gr', function() builtin.lsp_references { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>igr', function() builtin.lsp_references { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope LSP References ' })
-vim.keymap.set('n', '<leader>gi', function() builtin.lsp_implementations { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>igi', function() builtin.lsp_implementations { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope LSP Implementations ' })
-vim.keymap.set('n', '<leader>gd', function() builtin.lsp_definitions { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>igd', function() builtin.lsp_definitions { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope LSP Definitions ' })
-vim.keymap.set('n', '<leader>ge', function() builtin.diagnostics { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>ige', function() builtin.diagnostics { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope Current Diagnostics ' })
+
+vim.keymap.set('n', '<leader>sf', builtin.find_files, { desc = 'Telescope find files' })
+vim.keymap.set('n', '<leader>sp', builtin.live_grep, { desc = 'Telescope Live grep' })
+vim.keymap.set('n', '<leader>g<leader>', builtin.git_files, { desc = 'Telescope git ls-files' })
+vim.keymap.set('n', '<leader>ss', builtin.current_buffer_fuzzy_find, { desc = 'Telescope buffers' })
+vim.keymap.set('n', '<leader>tp', builtin.tags, { desc = 'Telescope Tags' })
+vim.keymap.set('n', '<leader>ts', builtin.current_buffer_tags, { desc = 'Current Buffer Tags' })
+vim.keymap.set('n', '<leader>gS', builtin.lsp_workspace_symbols, { desc = 'Telescope WorkSpace Symbols' })
+vim.keymap.set('n', '<leader>gs', builtin.lsp_document_symbols, { desc = 'Telescope Document symbols ' })
+vim.keymap.set('n', '<leader>gr', builtin.lsp_references, { desc = 'Telescope LSP References ' })
+vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, { desc = 'Telescope LSP Implementations ' })
+vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, { desc = 'Telescope LSP Definitions ' })
+vim.keymap.set('n', '<leader>ge', builtin.diagnostics, { desc = 'Telescope Current Diagnostics ' })
 
 local config_path = vim.fn.stdpath("config")
 local site_vimrc_path = config_path .. "/lua/site_vimrc.lua"
