@@ -21,11 +21,11 @@ Function git-dotfile {
  }
 
  Function nvim-vim {
-	nvim -u ~/.vimrc
+	nvim -u ~/.config/nvim/init.lua $args
  }
 
  Function nvim-qt-vim {
-	nvim-qt -- -u ~/.config/nvim/init.lua
+	nvim-qt -- -u ~/.config/nvim/init.lua $args
  }
-
+ 
 . $env:USERPROFILE/Documents/WindowsPowerShell/SiteSpecific.ps1
