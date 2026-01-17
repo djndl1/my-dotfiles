@@ -106,19 +106,23 @@ Plugin 'heaths/vim-msbuild'
 Plugin 'vlime/vlime', {'rtp': 'vim/'}
 " async completion
 if has('nvim')
-    Plugin 'hrsh7th/cmp-nvim-lsp'
+    Plugin 'ludovicchabant/vim-gutentags'
+    " I don't know if this is a bug of Vundle with nvim
+    " but a non-lua plugin is required here before any cmp-* lua plugin
+
     Plugin 'hrsh7th/cmp-buffer'
     Plugin 'hrsh7th/cmp-path'
     Plugin 'hrsh7th/cmp-cmdline'
-    Plugin 'hrsh7th/nvim-cmp'
     Plugin 'quangnguyen30192/cmp-nvim-ultisnips'
     Plugin 'delphinus/cmp-ctags'
+    Plugin 'hrsh7th/cmp-nvim-lsp'
+    Plugin 'hrsh7th/nvim-cmp'
 else
+    Plugin 'ludovicchabant/vim-gutentags'
+
     Plugin 'prabirshrestha/asyncomplete.vim'
     Plugin 'prabirshrestha/asyncomplete-lsp.vim'
 endif
-" manage tags file
-Plugin 'ludovicchabant/vim-gutentags'
 " display tags
 Plugin 'preservim/tagbar'
 "Debugger
