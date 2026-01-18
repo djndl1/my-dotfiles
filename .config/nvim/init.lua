@@ -1,7 +1,7 @@
 local vimrc = vim.fn.stdpath('config') .. '/vimrc'
 vim.cmd.source(vimrc)
 
-vim.g.gutentags_project_root = {'.project_root'}
+vim.g.gutentags_project_root = { '.project_root' }
 
 require("mason").setup()
 require("mason-lspconfig").setup()
@@ -60,6 +60,7 @@ local capabilities = require('cmp_nvim_lsp').default_capabilities()
 vim.lsp.enable('omnisharp')
 vim.lsp.enable('lua-language-server')
 vim.lsp.enable('jdtls')
+vim.lsp.enable('kotlin_language_server')
 
 vim.lsp.config['vala-language-server'] = {
   cmd = { 'vala-language-server' },
@@ -112,7 +113,8 @@ vim.keymap.set('n', '<leader>its', function() builtin.current_buffer_tags { defa
 vim.keymap.set('n', '<leader>igS',
   function() builtin.lsp_workspace_symbols { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope WorkSpace Symbols' })
-vim.keymap.set('n', '<leader>igs', function() builtin.lsp_document_symbols { default_text = vim.fn.expand("<cword>") } end,
+vim.keymap.set('n', '<leader>igs',
+  function() builtin.lsp_document_symbols { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope Document symbols ' })
 vim.keymap.set('n', '<leader>igr', function() builtin.lsp_references { default_text = vim.fn.expand("<cword>") } end,
   { desc = 'Telescope LSP References ' })
@@ -136,11 +138,49 @@ vim.keymap.set('n', '<leader>gi', builtin.lsp_implementations, { desc = 'Telesco
 vim.keymap.set('n', '<leader>gd', builtin.lsp_definitions, { desc = 'Telescope LSP Definitions ' })
 vim.keymap.set('n', '<leader>ge', builtin.diagnostics, { desc = 'Telescope Current Diagnostics ' })
 
+require("conform").setup({
+  -- Map of filetype to formatters
+  formatters_by_ft = {
+    lua = { "stylua" },
+    -- Conform will run multiple formatters sequentially
+    go = { "goimports", "gofmt" },
+    -- You can also customize some of the format options for the filetype
+    rust = { "rustfmt", lsp_format = "fallback" },
+    cs = { "csharpier", lsp_format = "prefer" },
+    -- You can use a function here to determine the formatters dynamically
+    python = function(bufnr)
+      if require("conform").get_formatter_info("ruff_format", bufnr).available then
+        return { "ruff_format" }
+      else
+        return { "isort", "black" }
+      end
+    end,
+    -- Use the "*" filetype to run formatters on all filetypes.
+    ["*"] = { "codespell" },
+    -- Use the "_" filetype to run formatters on filetypes that don't
+    -- have other formatters configured.
+    ["_"] = { "trim_whitespace" },
+  },
+  -- Set this to change the default values when calling conform.format()
+  -- This will also affect the default values for format_on_save/format_after_save
+  default_format_opts = {
+    lsp_format = "fallback",
+  },
+  -- Set the log level. Use `:ConformInfo` to see the location of the log file.
+  log_level = vim.log.levels.ERROR,
+  -- Conform will notify you when a formatter errors
+  notify_on_error = true,
+  -- Conform will notify you when no formatters are available for the buffer
+  notify_no_formatters = true,
+})
+
+vim.keymap.set('n', "<leader>cf", function()
+  require('conform').format()
+  end, { desc = "Format Buffer" })
+
 local config_path = vim.fn.stdpath("config")
 local site_vimrc_path = config_path .. "/lua/site_vimrc.lua"
 
 if vim.fn.filereadable(site_vimrc_path) ~= 0 then
   require('site_vimrc')
 end
-
-

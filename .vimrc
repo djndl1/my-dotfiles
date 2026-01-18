@@ -98,6 +98,7 @@ else
     Plugin 'mason-org/mason.nvim'
     Plugin 'mason-org/mason-lspconfig.nvim'
     Plugin 'neovim/nvim-lspconfig'
+    Plugin 'stevearc/conform.nvim'
 endif
 " C#
 Plugin 'nickspoons/vim-cs'
