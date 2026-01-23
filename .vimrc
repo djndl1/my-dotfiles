@@ -107,6 +107,7 @@ Plugin 'heaths/vim-msbuild'
 Plugin 'vlime/vlime', {'rtp': 'vim/'}
 " async completion
 if has('nvim')
+    Plugin 'milanglacier/minuet-ai.nvim'
     Plugin 'ludovicchabant/vim-gutentags'
     " I don't know if this is a bug of Vundle with nvim
     " but a non-lua plugin is required here before any cmp-* lua plugin
@@ -391,6 +392,12 @@ set grepformat+=%f:%l:%c:%m
 set clipboard+=unnamedplus
 
 runtime! ftplugin/man.vim
+
+" netrw
+let g:netrw_banner = 0
+set title
+
+set cmdheight=1
 
 " Set up proper encodings
 set fileencodings=ucs-bom,utf-8,utf-16,gbk,big5,gb18030,latin1

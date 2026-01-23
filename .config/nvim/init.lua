@@ -30,10 +30,21 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'ctags' },
     { name = 'ultisnips' }, -- For ultisnips users.
+    { name = 'minuet' },
   }, {
     { name = 'buffer' },
-  })
+  }),
+  performance = {
+    fetching_timeout = 50000
+  }
 })
+
+local config_path = vim.fn.stdpath("config")
+local llm_vimrc_path = config_path .. "/lua/llmrc.lua"
+
+if vim.fn.filereadable(llm_vimrc_path) ~= 0 then
+  require('llmrc')
+end
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
@@ -178,7 +189,6 @@ vim.keymap.set('n', "<leader>cf", function()
   require('conform').format()
   end, { desc = "Format Buffer" })
 
-local config_path = vim.fn.stdpath("config")
 local site_vimrc_path = config_path .. "/lua/site_vimrc.lua"
 
 if vim.fn.filereadable(site_vimrc_path) ~= 0 then
