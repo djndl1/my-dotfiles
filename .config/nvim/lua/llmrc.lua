@@ -6,7 +6,7 @@ require('minuet').setup {
     -- of 512, serves as an good starting point to estimate your computing
     -- power. Once you have a reliable estimate of your local computing power,
     -- you should adjust the context window to a larger value.
-    context_window = 256,
+    context_window = 512,
     provider_options = {
         openai_compatible = {
             -- For Windows users, TERM may not be present in environment variables.
@@ -20,6 +20,17 @@ require('minuet').setup {
                 top_p = 0.9,
             },
         },
+        workplace_deepseek = {
+            -- For Windows users, TERM may not be present in environment variables.
+            -- Consider using APPDATA instead.
+            api_key = 'DEEPSEEK_API_KEY',
+            name = 'DS',
+            end_point = 'http://mycisdi:8899/api/chat/completions',
+            model = 'AGIOne.101876501632454656',
+            optional = {
+                max_tokens = 50,
+                top_p = 0.9,
+            },
+        },
     },
 }
-
