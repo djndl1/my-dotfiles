@@ -339,6 +339,13 @@ let g:UltiSnipsEditSplit="vertical"
 set autowrite
 let g:auto_save = 1
 
+" Shortcut for faster save and quit
+nnoremap <silent> <leader>w :update<CR>
+" Saves the file if modified and quit
+nnoremap <silent> <leader>q :x<CR>
+" Quit all opened buffers
+nnoremap <silent> <leader>Q :qa<CR>
+
 map <C-n> :NERDTreeToggle<CR>
 
 " edit certain files.
@@ -390,6 +397,11 @@ set grepformat+=%f:%l:%c:%m
 
 " X11 * clipboard, + Windows clipboard
 set clipboard+=unnamedplus
+
+" highlight the current line
+set cursorline
+set colorcolumn=80,100,120
+
 
 runtime! ftplugin/man.vim
 
