@@ -8,7 +8,7 @@ require('minuet').setup {
     -- you should adjust the context window to a larger value.
     context_window = 512,
     provider_options = {
-        openai_compatible = {
+        openai_compatible_alt = {
             -- For Windows users, TERM may not be present in environment variables.
             -- Consider using APPDATA instead.
             api_key = 'MYQWEN_API_KEY',
@@ -20,7 +20,7 @@ require('minuet').setup {
                 top_p = 0.9,
             },
         },
-        workplace_deepseek = {
+        openai_compatible = {
             -- For Windows users, TERM may not be present in environment variables.
             -- Consider using APPDATA instead.
             api_key = 'DEEPSEEK_API_KEY',
