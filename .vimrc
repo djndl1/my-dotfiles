@@ -107,8 +107,8 @@ Plugin 'heaths/vim-msbuild'
 Plugin 'vlime/vlime', {'rtp': 'vim/'}
 " async completion
 if has('nvim')
-    Plugin 'milanglacier/minuet-ai.nvim'
     Plugin 'ludovicchabant/vim-gutentags'
+    Plugin 'milanglacier/minuet-ai.nvim'
     " I don't know if this is a bug of Vundle with nvim
     " but a non-lua plugin is required here before any cmp-* lua plugin
 
