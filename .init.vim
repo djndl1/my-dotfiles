@@ -43,4 +43,23 @@ nnoremap <silent> <leader>q :x<CR>
 nnoremap <silent> <leader>Q :qa<CR>
 nnoremap Y y$
 
-colorscheme sorbet
+if globpath(&runtimepath, 'colors/habamax.vim') !=# ''
+  colorscheme habamax
+elseif globpath(&runtimepath, 'colors/sorbet.vim') !=# ''
+  colorscheme sorbet
+elseif globpath(&runtimepath, 'colors/lunaperche.vim') !=# ''
+  colorscheme lunaperche
+else
+  colorscheme desert;
+endif
+
+if exists('g:vscode')
+	set rtp+=~/.vim/
+endif
+call plug#begin()
+	Plug 'tpope/vim-surround'
+	Plug  'cohama/lexima.vim'
+    Plug 'ludovicchabant/vim-gutentags'
+	Plug 'pechorin/any-jump.vim'
+	Plug 'mhinz/vim-grepper'
+call plug#end()
