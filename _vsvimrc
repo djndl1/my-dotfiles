@@ -14,6 +14,52 @@ cnoremap <C-f> <Right>
 
 inoremap jk <Esc>
 
+" poor man's vim-surround
+nnoremap ysiw( ciw(  )<Esc>hP
+nnoremap ysiwb ciw()<Esc>P
+
+nnoremap ysiw[ ciw[  ]<Esc>hP
+nnoremap ysiwr ciw[]<Esc>P
+
+nnoremap ysiw{ ciw{  }<Esc>hP
+nnoremap ysiwB ciw{}<Esc>P
+
+nnoremap ysiw< ciw<  ><Esc>hP
+nnoremap ysiwa ciw<><Esc>P
+
+nnoremap ysiw" ciw""<Esc>P
+nnoremap ysiw' ciw''<Esc>P
+
+vnoremap S( c(  )<Esc>hP
+vnoremap Sb c()<Esc>P
+
+vnoremap S[ c[  ]<Esc>hP
+vnoremap Sr c[]<Esc>P
+
+vnoremap S{ c{  }<Esc>hP
+vnoremap SB c{}<Esc>P
+
+vnoremap S< c<  ><Esc>hP
+vnoremap Sa c<><Esc>P
+
+vnoremap S" c""<Esc>P
+vnoremap S' c''<Esc>P
+
+nnoremap ds( di(vhp
+nnoremap ds[ di[vhp
+nnoremap ds{ di{vhp
+nnoremap ds< di<vhp
+nnoremap ds" di"vhp
+nnoremap ds' di'vhp
+
+nnoremap csiw( ciw<Esc>r(lr)P
+nnoremap csiw[ ciw<Esc>r[lr]P
+nnoremap csiw" ciw<Esc>r"lr"P
+nnoremap csiw' ciw<Esc>r'lr'P
+nnoremap csiw{ ciw<Esc>r{lr}P
+nnoremap csiw< ciw<Esc>r<lr>P
+
+
 nmap <Space>gd :vsc Edit.GoToDefinition<CR>
 nmap <Space>gr :vsc Edit.FindAllReferences<CR>
 nmap <Space>gf :vsc Edit.FormatDocument<CR>
