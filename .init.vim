@@ -56,10 +56,19 @@ endif
 if exists('g:vscode')
 	set rtp+=~/.vim/
 endif
-call plug#begin()
+call plug#begin("~/.vim/plugged")
 	Plug 'tpope/vim-surround'
 	Plug  'cohama/lexima.vim'
     Plug 'ludovicchabant/vim-gutentags'
-	Plug 'pechorin/any-jump.vim'
 	Plug 'mhinz/vim-grepper'
+	if !exists('g:vscode')
+		Plug 'pechorin/any-jump.vim'
+	endif
 call plug#end()
+
+nnoremap <Leader>sG :Grepper<Space>
+inoremap <C-b> <Left>
+inoremap <C-f> <Right>
+cnoremap <C-b> <Left>
+cnoremap <C-f> <Right>
+nnoremap <leader>tab :tabnew<CR>
