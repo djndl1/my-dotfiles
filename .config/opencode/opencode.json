@@ -1,0 +1,17 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+	"provider": {
+		"my-deepseek": {
+			"npm": "@ai-sdk/openai-compatible",
+      "name": "Custom DeepSeek",
+			"options": {
+				"baseURL": "http://mycisdi:8899/api/"
+			},
+			"models": {
+      	"AGIOne.101876501632454656": {
+      	    "name": "V3"
+      	  }
+      }
+		}
+	}
+}
