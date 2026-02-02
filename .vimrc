@@ -109,6 +109,8 @@ Plugin 'vlime/vlime', {'rtp': 'vim/'}
 if has('nvim')
     Plugin 'ludovicchabant/vim-gutentags'
     Plugin 'milanglacier/minuet-ai.nvim'
+    Plugin 'frankroeder/parrot.nvim'
+    Plugin 'piersolenski/wtf.nvim'
     " I don't know if this is a bug of Vundle with nvim
     " but a non-lua plugin is required here before any cmp-* lua plugin
 

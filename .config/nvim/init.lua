@@ -31,6 +31,7 @@ cmp.setup({
     { name = 'ctags' },
     { name = 'ultisnips' }, -- For ultisnips users.
     { name = 'minuet' },
+    { name = 'parrot' },
   }, {
     { name = 'buffer' },
   }),

@@ -34,3 +34,27 @@ require('minuet').setup {
         },
     },
 }
+
+require("parrot").setup {
+    providers = {
+        deepseek = {
+            name = "deepseek",
+            api_key = os.getenv "DEEPSEEK_API_KEY",
+            endpoint = 'http://mycisdi:8899/api/chat/completions',
+            model_endpoint = 'http://mycisdi:8899/api/models',
+            params = {
+                chat = { temperature = 1.1, top_p = 1 },
+                command = { temperature = 1.1, top_p = 1 },
+            },
+            topic = {
+                model = "AGIOne.101876501632454656",
+                params = { max_completion_tokens = 64 },
+            },
+            models = {
+                "AGIOne.101876501632454656",
+            }
+        }
+    },
+
+    system_propmt = { }
+}
