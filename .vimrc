@@ -111,6 +111,7 @@ if has('nvim')
     Plugin 'milanglacier/minuet-ai.nvim'
     Plugin 'frankroeder/parrot.nvim'
     Plugin 'piersolenski/wtf.nvim'
+    Plugin 'MunifTanjim/nui.nvim'
     " I don't know if this is a bug of Vundle with nvim
     " but a non-lua plugin is required here before any cmp-* lua plugin
 
