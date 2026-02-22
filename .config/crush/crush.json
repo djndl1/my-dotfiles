@@ -20,7 +20,7 @@
     },
     "my-deepseek": {
       "type": "openai-compat",
-      "base_url": "http:///api",
+      "base_url": "$MY_DEEPSEEK_URL",
       "api_key": "$DEEPSEEK_API_KEY",
       "models": [
         {
