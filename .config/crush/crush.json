@@ -1,0 +1,56 @@
+{
+  "$schema": "https://charm.land/crush.json",
+  "providers": {
+    "personal-deepseek": {
+      "type": "openai-compat",
+      "base_url": "https://api.deepseek.com/v1",
+      "api_key": "$PERSONAL_DEEPSEEK_KEY",
+      "models": [
+        {
+          "id": "deepseek-chat",
+          "name": "personal-deepseek",
+          "cost_per_1m_in": 0,
+          "cost_per_1m_out": 0,
+          "cost_per_1m_in_cached": 0,
+          "cost_per_1m_out_cached": 0,
+          "context_window": 128000,
+          "default_max_tokens": 4000
+        }
+      ]
+    },
+    "my-deepseek": {
+      "type": "openai-compat",
+      "base_url": "http:///api",
+      "api_key": "$DEEPSEEK_API_KEY",
+      "models": [
+        {
+          "id": "AGIOne.101876501632454656",
+          "name": "my-deepseek",
+          "cost_per_1m_in": 0,
+          "cost_per_1m_out": 0,
+          "cost_per_1m_in_cached": 0,
+          "cost_per_1m_out_cached": 0,
+          "context_window": 100000,
+          "default_max_tokens": 4000
+        }
+      ]
+    },
+    "my-qwen": {
+      "type": "openai-compat",
+      "base_url": "https://dashscope.aliyuncs.com/compatible-mode/v1/",
+      "api_key": "$MYQWEN_API_KEY",
+      "models": [
+        {
+          "id": "qwen-max",
+          "name": "my-qwen",
+          "cost_per_1m_in": 0,
+          "cost_per_1m_out": 0,
+          "cost_per_1m_in_cached": 0,
+          "cost_per_1m_out_cached": 0,
+          "context_window": 100000,
+          "default_max_tokens": 10000
+        }
+      ]
+    }
+  }
+}
