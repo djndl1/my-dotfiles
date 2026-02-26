@@ -25,7 +25,7 @@ require('minuet').setup {
             -- Consider using APPDATA instead.
             api_key = 'DEEPSEEK_API_KEY',
             name = 'DS',
-            end_point = 'http://mycisdi:8899/api/chat/completions',
+            end_point = os.getenv "DEEPSEEK_BASE_URL" .. 'chat/completions',
             model = 'AGIOne.101876501632454656',
             optional = {
                 max_tokens = 50,
@@ -40,11 +40,11 @@ require("parrot").setup {
         deepseek = {
             name = "deepseek",
             api_key = os.getenv "DEEPSEEK_API_KEY",
-            endpoint = 'http://mycisdi:8899/api/chat/completions',
-            model_endpoint = 'http://mycisdi:8899/api/models',
+            endpoint = os.getenv "DEEPSEEK_BASE_URL" .. 'chat/completions',
+            model_endpoint = os.getenv "DEEPSEEK_BASE_URL" .. 'models',
             params = {
-                chat = { temperature = 1.1, top_p = 1 },
-                command = { temperature = 1.1, top_p = 1 },
+                chat = { temperature = 0.5, top_p = 1 },
+                command = { temperature = 0.1, top_p = 1 },
             },
             topic = {
                 model = "AGIOne.101876501632454656",
