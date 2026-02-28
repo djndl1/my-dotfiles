@@ -25,6 +25,8 @@ set shiftwidth=4    " number of spaces to use for autoindent
 set ignorecase smartcase
 set cursorline
 set colorcolumn=80,100,120
+set number
+set relativenumber
 
 if has('mouse')
     set mouse=nic  " Enable mouse in several mode
@@ -42,6 +44,7 @@ nnoremap <silent> <leader>q :x<CR>
 " Quit all opened buffers
 nnoremap <silent> <leader>Q :qa<CR>
 nnoremap Y y$
+nnoremap <silent> <leader>N <Esc>:let @"=line(".")<CR>
 
 if globpath(&runtimepath, 'colors/habamax.vim') !=# ''
   colorscheme habamax

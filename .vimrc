@@ -405,6 +405,8 @@ set clipboard+=unnamedplus
 set cursorline
 set colorcolumn=80,100,120
 
+" easy copy of the current line number
+nnoremap <silent> <leader>N <Esc>:let @"=line(".")<CR>
 
 runtime! ftplugin/man.vim
 
