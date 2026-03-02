@@ -30,7 +30,6 @@ cmp.setup({
     { name = 'nvim_lsp' },
     { name = 'ctags' },
     { name = 'ultisnips' }, -- For ultisnips users.
-    { name = 'minuet' },
     { name = 'parrot' },
   }, {
     { name = 'buffer' },
