@@ -363,6 +363,8 @@ cnoremap <C-f> <Right>
 
 nnoremap <leader>tab :tabnew<CR>
 nnoremap <leader>b :Neomake!<Space>
+nnoremap <leader>bo :copen<CR>
+nnoremap <leader>bc :cclose<CR>
 
 inoremap jk <Esc>
 "}}}
