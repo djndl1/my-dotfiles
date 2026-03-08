@@ -409,7 +409,9 @@ set cursorline
 set colorcolumn=80,100,120
 
 " easy copy of the current line number
-nnoremap <silent> <leader>N <Esc>:let @+=line(".")<CR>
+nnoremap <silent> <leader>fN <Esc>:let @+=line(".")<CR>
+nnoremap <silent> <leader>fB <Esc>:let @+=@%<CR>
+nnoremap <silent> <leader>fP  <Esc>:let @+=expand('%:p')<CR>
 
 runtime! ftplugin/man.vim
 
