@@ -1,5 +1,18 @@
 {
   "$schema": "https://charm.land/crush.json",
+   "lsp": {
+    "csharp": {
+      "command": "dotnet",
+	  "args": [
+		  "/home/djn/.local/share/nvim/mason/packages/omnisharp/libexec/OmniSharp.dll",
+		  "-z", 
+		  "DotNet:enablePackageRestore=false",
+		  "--encoding",
+		  "utf-8",
+		  "--languageserver"
+	  ]
+    }
+  },
   "providers": {
     "personal-deepseek": {
       "type": "openai-compat",
@@ -31,7 +44,7 @@
           "cost_per_1m_in_cached": 0,
           "cost_per_1m_out_cached": 0,
           "context_window": 100000,
-          "default_max_tokens": 4000
+          "default_max_tokens": 10000
         }
       ]
     },
