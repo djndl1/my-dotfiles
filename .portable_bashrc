@@ -19,6 +19,7 @@ function mono-debug {
 }
 
 export MANPAGER='nvim +Man!'
+export VISUAL='vim -u ~/.init.vim'
 
 HKPROXY='http://djn:freebird@mytencent2:8888'
 
@@ -53,3 +54,9 @@ function redmi9A-show-battery {
     ssh Redmi9A  "$CMD"
 }
 export FZF_DEFAULT_COMMAND="fdfind . --absolute-path --hidden --exclude .git"
+
+function minimax-remains {
+	curl --location 'https://www.minimaxi.com/v1/api/openplatform/coding_plan/remains' \
+	--header "Authorization: Bearer ${MINIMAX_API_KEY}" \
+	--header 'Content-Type: application/json'
+}
