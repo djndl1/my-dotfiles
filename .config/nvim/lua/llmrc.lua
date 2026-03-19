@@ -39,6 +39,38 @@ end
 
 require("parrot").setup {
     providers = {
+		minimax = {
+			name = "minimax",
+			endpoint = "https://api.minimaxi.com/v1/text/chatcompletion_v2",
+			model_endpoint = "https://api.minimaxi.com/v1/models",
+            api_key = os.getenv "MINIMAX_API_KEY",
+			params = {
+				chat = { max_tokens = 204800},
+	        	command = { max_tokens = 204800 },
+			},
+	      topic = {
+	        model = "MiniMax-M2.5",
+	        params = { max_tokens = 1000 },
+	      },
+          params = {
+              chat = { temperature = 0.5, top_p = 0.5, stream = true },
+              command = { temperature = 0.1, top_p = 0.2 },
+          },
+	      models = {
+	        "MiniMax-M2.5",
+	      },
+		  get_available_models = function(self, args)
+			  return { "MiniMax-M2.5" }
+		  end,
+		  preprocess_payload = function(payload)
+			    for _, message in ipairs(payload.messages) do
+			      message.content = message.content:gsub("^%s*(.-)%s*$", "%1")
+			    end
+				print(payload)
+				payload.max_tokens = nil
+			    return payload
+		  end,
+		},
         qwen = {
             name = "qwen",
             api_key = os.getenv "MYQWEN_API_KEY",
@@ -93,8 +125,6 @@ require("parrot").setup {
 				        "qwen3.5-plus-2026-02-15",
 				        "qwen3.5-397b-a17b",
 				        "qwen3.5-122b-a10b",
-				        "qwen3.5-flash",
-				        "qwen3.5-flash-2026-02-23",
 				        "qwen3.5-35b-a3b",
 				        "qwen3.5-27b",
 				        "MiniMax-M2.5",
