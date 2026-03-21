@@ -145,7 +145,10 @@ require("parrot").setup {
             },
             models = {
                 "AGIOne.101876501632454656",
-            }
+            },
+		  get_available_models = function(self, args)
+			  return { "AGIOne.101876501632454656" }
+		  end,
         }
     },
 
