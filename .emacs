@@ -21,6 +21,7 @@
 (straight-use-package 'magit)
 (straight-use-package 'projectile)
 (straight-use-package 'sly)
+(straight-use-package 'diff-hl)
 
 (keyboard-translate ?\C-h ?\C-?) ; translate C-h to backspace
 (setq display-line-numbers-mode 'relative)
@@ -28,6 +29,9 @@
 (electric-pair-mode 1)
 (hl-line-mode)
 (setq completion-styles '(basic partial-completion flex))
+
+(require 'diff-hl)
+(global-diff-hl-mode)
 
 (use-package doom-themes
   :ensure nil
