@@ -23,11 +23,18 @@
 (straight-use-package 'sly)
 (straight-use-package 'diff-hl)
 
-(keyboard-translate ?\C-h ?\C-?) ; translate C-h to backspace
-(setq display-line-numbers-mode 'relative)
+(global-set-key (kbd "C-x h") 'help)
+(define-key key-translation-map (kbd "C-h") (kbd "DEL"))
+
 (global-display-line-numbers-mode 1)
+(setq display-line-numbers-mode 'relative)
+
 (electric-pair-mode 1)
+
 (hl-line-mode)
+
+(tab-bar-mode)
+
 (setq completion-styles '(basic partial-completion flex))
 
 (require 'diff-hl)
