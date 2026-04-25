@@ -22,18 +22,46 @@
 (straight-use-package 'projectile)
 (straight-use-package 'sly)
 (straight-use-package 'diff-hl)
+(straight-use-package 'counsel)
+
+(ivy-mode)
+(setopt ivy-use-virtual-buffers t)
+(setopt enable-recursive-minibuffers t)
+;; Enable this if you want `swiper' to use it:
+;; (setopt search-default-mode #'char-fold-to-regexp)
+(keymap-global-set "C-c s i" #'swiper-isearch)
+(keymap-global-set "C-c C-r" #'ivy-resume)
+
+(keymap-global-set "M-x" #'counsel-M-x)
+(keymap-global-set "C-x C-f" #'counsel-find-file)
+(keymap-global-set "C-x h f" #'counsel-describe-function)
+(keymap-global-set "C-x h v" #'counsel-describe-variable)
+(keymap-global-set "C-x h o" #'counsel-describe-symbol)
+
+(keymap-global-set "C-x 8" #'counsel-unicode-char)
+(keymap-global-set "C-c g" #'counsel-git)
+(keymap-global-set "C-c j" #'counsel-git-grep)
+
+
+
+(keymap-set minibuffer-local-map "C-r" #'counsel-minibuffer-history)
 
 (global-set-key (kbd "C-x h") 'help)
 (define-key key-translation-map (kbd "C-h") (kbd "DEL"))
 
+(setq display-line-numbers-type 'relative)
 (global-display-line-numbers-mode 1)
-(setq display-line-numbers-mode 'relative)
+
+(column-number-mode 1)
 
 (electric-pair-mode 1)
 
-(hl-line-mode)
+(global-hl-line-mode)
 
 (tab-bar-mode)
+
+;; OSC52 
+(setq osc52-select-text t)
 
 (setq completion-styles '(basic partial-completion flex))
 
