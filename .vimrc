@@ -389,7 +389,7 @@ set mouse=a
 set history=5000
 
 " set a ruler
-set colorcolumn=120
+set colorcolumn=80,100,120
 
 " true colors and one dark
 set termguicolors
