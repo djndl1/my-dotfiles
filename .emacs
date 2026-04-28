@@ -23,6 +23,7 @@
 (straight-use-package 'sly)
 (straight-use-package 'diff-hl)
 (straight-use-package 'counsel)
+(straight-use-package 'counsel-projectile)
 
 (ivy-mode)
 (setopt ivy-use-virtual-buffers t)
@@ -39,6 +40,7 @@
 (keymap-global-set "C-c g" #'counsel-git)
 (keymap-global-set "C-c j" #'counsel-git-grep)
 
+(define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 
 (keymap-set minibuffer-local-map "C-r" #'counsel-minibuffer-history)
