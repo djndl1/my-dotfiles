@@ -40,6 +40,7 @@
 (keymap-global-set "C-c g" #'counsel-git)
 (keymap-global-set "C-c j" #'counsel-git-grep)
 
+(projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
 
