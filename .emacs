@@ -34,9 +34,6 @@
 
 (keymap-global-set "M-x" #'counsel-M-x)
 (keymap-global-set "C-x C-f" #'counsel-find-file)
-(keymap-global-set "C-x h f" #'counsel-describe-function)
-(keymap-global-set "C-x h v" #'counsel-describe-variable)
-(keymap-global-set "C-x h o" #'counsel-describe-symbol)
 
 (keymap-global-set "C-x 8" #'counsel-unicode-char)
 (keymap-global-set "C-c g" #'counsel-git)
