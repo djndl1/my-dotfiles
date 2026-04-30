@@ -15,9 +15,6 @@ alias emacs='TERM=xterm-kitty emacs'
 alias emacsclient='TERM=xterm-kitty emacsclient'
 alias emacs-home='TERM=xterm-kitty emacs --init-directory=${HOME}'
 
-bind '"\ew": copy-region-as-kill'
-bind '"\ed": kill-region'
-
 stty stop ''
 
 function java-debug-args {
