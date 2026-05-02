@@ -24,7 +24,9 @@
 (straight-use-package 'diff-hl)
 (straight-use-package 'counsel)
 (straight-use-package 'counsel-projectile)
-
+(straight-use-package 'clipetty)
+(global-clipetty-mode)
+(setq x-select-enable-clipboard t)
 (ivy-mode)
 (setopt ivy-use-virtual-buffers t)
 (setopt enable-recursive-minibuffers t)
@@ -59,6 +61,12 @@
 (global-hl-line-mode)
 
 (tab-bar-mode)
+(display-fill-column-indicator-mode)
+(add-hook 'org-mode-hook
+          (lambda ()
+            (setq fill-column 100)
+            (turn-on-auto-fill)))
+
 
 ;; OSC52 
 (setq osc52-select-text t)
