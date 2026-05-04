@@ -39,10 +39,16 @@
 (straight-use-package 'company-math) ; for Latex
 (straight-use-package 'company-shell) ; for shell scripting
 ;;; linting
-(straight-use-package 'flycheck)
+(straight-use-package 'flymake)
 
 ;;; LSP support
-(straight-use-package 'lsp-mode)
+(straight-use-package 'eglot)
+
+;;; eval-print
+(straight-use-package 'quickrun)
+
+;;; vala
+(straight-use-package 'vala-mode)
 
 (global-clipetty-mode)
 (setq x-select-enable-clipboard t)
@@ -68,6 +74,7 @@
 (keymap-set minibuffer-local-map "C-r" #'counsel-minibuffer-history)
 
 (global-set-key (kbd "C-x h") 'help)
+(global-set-key (kbd "<f1> .") 'eldoc)
 (define-key key-translation-map (kbd "C-h") (kbd "DEL"))
 
 (setq display-line-numbers-type 'relative)
@@ -110,6 +117,10 @@
 				   company-yasnippet))))
      )
 (add-hook 'shell-mode-hook #'append-shell-company-backends)
+
+;;; Register vala-mode with vala-language-server
+(add-to-list 'eglot-server-programs '(vala-mode . ("vala-language-server")))
+
 
 (use-package doom-themes
   :ensure nil
