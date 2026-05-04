@@ -119,7 +119,10 @@
 (add-hook 'shell-mode-hook #'append-shell-company-backends)
 
 ;;; Register vala-mode with vala-language-server
-(add-to-list 'eglot-server-programs '(vala-mode . ("vala-language-server")))
+(with-eval-after-load 'eglot
+  (add-to-list 'eglot-server-programs '(vala-mode . ("vala-language-server")))
+)
+
 
 
 (use-package doom-themes
