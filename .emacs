@@ -16,15 +16,34 @@
   (load bootstrap-file nil 'nomessage))
 
 
-;;; install various packages
+;;; themes
 (straight-use-package 'doom-themes)
+;;; project management
 (straight-use-package 'magit)
 (straight-use-package 'projectile)
+
 (straight-use-package 'sly)
 (straight-use-package 'diff-hl)
+
+;;; snippet template engine
+(straight-use-package 'yasnippet)
+(straight-use-package 'yasnippet-snippets)
+
+;;; outline and menu
 (straight-use-package 'counsel)
 (straight-use-package 'counsel-projectile)
+;;; copy
 (straight-use-package 'clipetty)
+;;; completion
+(straight-use-package 'company)
+(straight-use-package 'company-math) ; for Latex
+(straight-use-package 'company-shell) ; for shell scripting
+;;; linting
+(straight-use-package 'flycheck)
+
+;;; LSP support
+(straight-use-package 'lsp-mode)
+
 (global-clipetty-mode)
 (setq x-select-enable-clipboard t)
 (ivy-mode)
@@ -45,7 +64,7 @@
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
-
+(add-hook 'after-init-hook 'global-company-mode)
 (keymap-set minibuffer-local-map "C-r" #'counsel-minibuffer-history)
 
 (global-set-key (kbd "C-x h") 'help)
@@ -55,26 +74,42 @@
 (global-display-line-numbers-mode 1)
 
 (column-number-mode 1)
-
 (electric-pair-mode 1)
-
 (global-hl-line-mode)
+(global-company-mode 1)
 
 (tab-bar-mode)
 (display-fill-column-indicator-mode)
+
 (add-hook 'org-mode-hook
           (lambda ()
             (setq fill-column 100)
             (turn-on-auto-fill)))
 
+(setq etags-regen-progra "ctags")
+(setq etags-regen-program-option "--recursive=yes")
+(etags-regen-mode 1)
+
+;; set up yasnippet directory
+(setq yas-snippet-dirs '("~/.doom.d/snippets/"))
+(yas-global-mode 1)
 
 ;; OSC52 
 (setq osc52-select-text t)
-
 (setq completion-styles '(basic partial-completion flex))
-
 (require 'diff-hl)
-(global-diff-hl-mode)
+(global-hl-line-mode 1)
+
+(defun append-shell-company-backends ()
+  ((setq-local company-backends '((company-capf
+				   company-shell
+				   company-shell-env
+				   company-keywords
+				   :with company-etags
+				   company-dabbrev-code
+				   company-yasnippet))))
+     )
+(add-hook 'shell-mode-hook #'append-shell-company-backends)
 
 (use-package doom-themes
   :ensure nil
