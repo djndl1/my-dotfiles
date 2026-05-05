@@ -69,3 +69,7 @@ function minimax-remains {
 	--header "Authorization: Bearer ${MINIMAX_API_KEY}" \
 	--header 'Content-Type: application/json'
 }
+
+copy() {
+	printf '\033]52;c;%s\a' "$(cat | base64 | tr -d '\n')"
+}
