@@ -102,7 +102,11 @@
 (yas-global-mode 1)
 
 ;; OSC52 
+(setq xterm-extra-capabilities '(getSelection setSelection))
+(global-clipetty-mode 1)
 (setq osc52-select-text t)
+(setq select-enable-clipboard t)
+(setq select-enable-primary t)
 (setq completion-styles '(basic partial-completion flex))
 (require 'diff-hl)
 (global-hl-line-mode 1)
@@ -123,7 +127,7 @@
   (add-to-list 'eglot-server-programs '(vala-mode . ("vala-language-server")))
 )
 
-
+(setq ediff-split-window-function 'split-window-horizontally)
 
 (use-package doom-themes
   :ensure nil
@@ -156,4 +160,4 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(default ((t (:family "Cascadia Mono" :foundry "SAJA" :slant normal :weight regular :height 105 :width normal)))))
+ '(default ((t (:family "Cascadia Mono" :foundry "SAJA" :slant normal :weight regular :height 98 :width normal)))))
