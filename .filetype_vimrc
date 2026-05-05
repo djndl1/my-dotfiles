@@ -34,6 +34,7 @@ autocmd FileType cs call s:on_csharp_buffer_enabled()
 
 function! s:on_csharp_buffer_enabled() abort
   setlocal nowrap nolinebreak list nospell
+  setlocal foldlevel=100
   if !has('nvim')
    	nmap <buffer> <leader>gd <Plug>(omnisharp_go_to_definition)
    	nmap <buffer> <leader>gs <Plug>(omnisharp_find_symbol)
