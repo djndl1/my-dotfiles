@@ -67,6 +67,7 @@
 (keymap-global-set "C-c g" #'counsel-git)
 (keymap-global-set "C-c j" #'counsel-git-grep)
 
+
 (projectile-mode +1)
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 
@@ -93,20 +94,27 @@
             (setq fill-column 100)
             (turn-on-auto-fill)))
 
+(defun enable-csharp-lsp ()
+  (eglot))
+
+(add-hook 'csharp-mode #'enable-csharp-lsp)
+	  
+
 (setq etags-regen-progra "ctags")
 (setq etags-regen-program-option "--recursive=yes")
 (etags-regen-mode 1)
+(auto-revert-mode)
 
 ;; set up yasnippet directory
 (setq yas-snippet-dirs '("~/.doom.d/snippets/"))
 (yas-global-mode 1)
 
 ;; OSC52 
-(setq xterm-extra-capabilities '(getSelection setSelection))
+;(setq xterm-extra-capabilities '(getSelection setSelection))
 (global-clipetty-mode 1)
-(setq osc52-select-text t)
-(setq select-enable-clipboard t)
-(setq select-enable-primary t)
+;(setq osc52-select-text t)
+;(setq select-enable-clipboard t)
+;(setq select-enable-primary t)
 (setq completion-styles '(basic partial-completion flex))
 (require 'diff-hl)
 (global-hl-line-mode 1)
@@ -122,10 +130,17 @@
      )
 (add-hook 'shell-mode-hook #'append-shell-company-backends)
 
+
 ;;; Register vala-mode with vala-language-server
 (with-eval-after-load 'eglot
   (add-to-list 'eglot-server-programs '(vala-mode . ("vala-language-server")))
-)
+  )
+(add-hook 'eglot-managed-mode-hook
+	  (lambda ()
+	    (keymap-local-set "M-s i" #'eglot-find-implementation)
+	    (keymap-local-set "M-s f" #'eglot-format-buffer)
+	    (keymap-local-set "M-s r" #'eglot-rename)
+	    (keymap-local-set "M-s c" #'eglot-code-action-suggestion)))
 
 (setq ediff-split-window-function 'split-window-horizontally)
 
@@ -154,7 +169,12 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(safe-local-variable-values '((org-cite-csl-styles-dir . "~/Notes/CSNotes/resources/"))))
+ '(column-number-mode t)
+ '(display-line-numbers-type 'relative)
+ '(global-display-line-numbers-mode t)
+ '(safe-local-variable-directories '("/home/djn/CISDIWorkSpace/"))
+ '(safe-local-variable-values '((org-cite-csl-styles-dir . "~/Notes/CSNotes/resources/")))
+ '(tab-bar-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
