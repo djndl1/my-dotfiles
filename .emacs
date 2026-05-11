@@ -99,9 +99,7 @@
             (setq fill-column 100)
             (turn-on-auto-fill)))
 
-(defun enable-csharp-lsp ()
-  (eglot))
-(add-hook 'csharp-mode-hook #'enable-csharp-lsp)
+(add-hook 'csharp-mode-hook #'eglot-ensure)
 
 (add-hook 'prog-mode-hook #'evil-local-mode)
 
