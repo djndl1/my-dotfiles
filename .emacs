@@ -181,3 +181,6 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(default ((t (:family "Cascadia Mono" :foundry "SAJA" :slant normal :weight regular :height 98 :width normal)))))
+
+(when (file-exists-p "~/.emacs.d/site.el")
+  (load "~/.emacs.d/site.el"))
