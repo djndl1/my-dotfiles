@@ -16,6 +16,13 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'evil)
+(setq evil-want-C-u-scroll t)
+(setq evil-want-C-u-delete t)
+(setq evil-want-C-d-scroll t)
+(setq evil-want-C-h-delete t)
+(setq evil-want-C-w-delete t)
+(setq evil-want-C-i-jump t)
+(require 'evil)
 ;;; themes
 (straight-use-package 'doom-themes)
 ;;; project management
@@ -50,9 +57,6 @@
 ;;; vala
 (straight-use-package 'vala-mode)
 
-(evil-mode 1)
-(global-clipetty-mode)
-(setq x-select-enable-clipboard t)
 (ivy-mode)
 (setopt ivy-use-virtual-buffers t)
 (setopt enable-recursive-minibuffers t)
@@ -97,25 +101,23 @@
 
 (defun enable-csharp-lsp ()
   (eglot))
+(add-hook 'csharp-mode-hook #'enable-csharp-lsp)
 
-(add-hook 'csharp-mode #'enable-csharp-lsp)
-	  
+(add-hook 'prog-mode-hook #'evil-local-mode)
 
 (setq etags-regen-progra "ctags")
 (setq etags-regen-program-option "--recursive=yes")
 (etags-regen-mode 1)
-(auto-revert-mode)
+(global-auto-revert-mode 1)
 
 ;; set up yasnippet directory
 (setq yas-snippet-dirs '("~/.doom.d/snippets/"))
 (yas-global-mode 1)
 
 ;; OSC52 
-;(setq xterm-extra-capabilities '(getSelection setSelection))
-(global-clipetty-mode 1)
-;(setq osc52-select-text t)
-;(setq select-enable-clipboard t)
-;(setq select-enable-primary t)
+(setq xterm-extra-capabilities '(setSelection))
+(setq select-enable-clipboard t)
+(setq select-enable-primary t)
 (setq completion-styles '(basic partial-completion flex))
 (require 'diff-hl)
 (global-hl-line-mode 1)
