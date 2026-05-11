@@ -15,7 +15,7 @@
       (eval-print-last-sexp)))
   (load bootstrap-file nil 'nomessage))
 
-
+(straight-use-package 'evil)
 ;;; themes
 (straight-use-package 'doom-themes)
 ;;; project management
@@ -50,6 +50,7 @@
 ;;; vala
 (straight-use-package 'vala-mode)
 
+(evil-mode 1)
 (global-clipetty-mode)
 (setq x-select-enable-clipboard t)
 (ivy-mode)
