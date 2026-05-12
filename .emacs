@@ -23,7 +23,9 @@
 (setq evil-want-C-w-delete t)
 (setq evil-want-C-i-jump t)
 (require 'evil)
-;;; themes
+(evil-set-leader 'normal (kbd "SPC"))
+(evil-define-key 'normal 'global (kbd "<leader>w") 'save-buffer)
+;;; theme
 (straight-use-package 'doom-themes)
 ;;; project management
 (straight-use-package 'magit)
@@ -101,7 +103,9 @@
 
 (add-hook 'csharp-mode-hook #'eglot-ensure)
 
-(add-hook 'prog-mode-hook #'evil-local-mode)
+(add-hook 'prog-mode-hook (lambda ()
+			    (turn-on-evil-mode)
+			    (evil-esc-mode 1)))
 
 (setq etags-regen-progra "ctags")
 (setq etags-regen-program-option "--recursive=yes")
