@@ -33,6 +33,7 @@ if has('mouse')
     set mousemodel=popup  " Set the behaviour of mouse
 endif
 
+set hlsearch " highlight the previous search. turn off the current highlight with :nohlsearch
 set incsearch
 set wildmenu
 

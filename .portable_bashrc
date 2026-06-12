@@ -14,8 +14,7 @@ alias vin='vim -u ~/.init.vim'
 alias emacs='TERM=xterm-kitty emacs'
 alias emacsclient='TERM=xterm-kitty emacsclient'
 alias emacs-home='TERM=xterm-kitty emacs --init-directory=${HOME}'
-
-
+export COLORTERM=truecolor
 
 stty stop ''
 
@@ -70,4 +69,8 @@ function minimax-remains {
 	curl --location 'https://www.minimaxi.com/v1/api/openplatform/coding_plan/remains' \
 	--header "Authorization: Bearer ${MINIMAX_API_KEY}" \
 	--header 'Content-Type: application/json'
+}
+
+copy() {
+	printf '\033]52;c;%s\a' "$(cat | base64 | tr -d '\n')"
 }
