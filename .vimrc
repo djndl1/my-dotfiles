@@ -412,6 +412,9 @@ set colorcolumn=80,100,120
 nnoremap <silent> <leader>fN <Esc>:let @+=line(".")<CR>
 nnoremap <silent> <leader>fB <Esc>:let @+=@%<CR>
 nnoremap <silent> <leader>fP  <Esc>:let @+=expand('%:p')<CR>
+nnoremap <silent> <leader>sM /^\s\+
+nnoremap <silent> <leader>hM <Esc>:Man<Space>
+nnoremap <silent> <leader>hI <Esc>:Info<Space>
 
 runtime! ftplugin/man.vim
 
