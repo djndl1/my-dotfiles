@@ -67,7 +67,7 @@ bindsym $mod+Tab exec "rofi -modi drun,run,window,filebrowser -show window"
 #bindsym $mod+d exec $kmenu
 
 # lock screen
-bindsym Control+Mod1+l exec "i3lock -t -i /home/djn/.local/share/wallpapers/Sweet-Wallpapers/Sweet-space.png"
+bindsym Control+Mod1+l exec "swaylock -t -i /usr/share/backgrounds/greybird.svg"
 
 # A more modern dmenu replacement is rofi:
 
@@ -230,8 +230,8 @@ bar {
     swaybar_command waybar
 }
 
-output DP-1 pos 0 0
-output eDP-1 scale 1.25 pos 0 1080
+output DP-1 pos 0 0 background "/usr/share/backgrounds/greybird.svg" fill
+output eDP-1 scale 1.25 pos 0 1080 background "/usr/share/backgrounds/greybird.svg" fill
 
 include /etc/sway/config.d/*
 
