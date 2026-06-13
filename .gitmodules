@@ -4,3 +4,6 @@
 [submodule "/home/djn/.config/alacritty/themes"]
 	path = /home/djn/.config/alacritty/themes
 	url = https://github.com/alacritty/alacritty-theme.git
+[submodule ".config/alacritty/theme-new"]
+	path = .config/alacritty/theme-new
+	url = https://github.com/alacritty/alacritty-theme.git
