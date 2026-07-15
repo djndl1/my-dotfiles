@@ -72,6 +72,9 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec "rofi -modi drun,run,window,filebrowser -show drun"
 bindsym $mod+Tab exec "rofi -modi drun,run,window,filebrowser -show window"
 #bindsym $mod+d exec $kmenu
+bindsym $mod+d exec "rofi -modi drun,run,window,filebrowser -show drun -font 'Cascadia Mono 10'"
+bindsym $mod+Shift+s exec "rofi -show window"
+bindsym $mod+Shift+f exec "rofi -show filebrowser"
 
 # lock screen
 bindsym Control+Mod1+l exec "i3lock -t -i /home/djn/.local/share/wallpapers/Sweet-Wallpapers/Sweet-space.png"
