@@ -39,39 +39,7 @@ end
 
 require("parrot").setup {
     providers = {
-		minimax = {
-			name = "minimax",
-			endpoint = "https://api.minimaxi.com/v1/text/chatcompletion_v2",
-			model_endpoint = "https://api.minimaxi.com/v1/models",
-            api_key = os.getenv "MINIMAX_API_KEY",
-			params = {
-				chat = { max_tokens = 204800},
-	        	command = { max_tokens = 204800 },
-			},
-	      topic = {
-	        model = "MiniMax-M2.5",
-	        params = { max_tokens = 1000 },
-	      },
-          params = {
-              chat = { temperature = 0.5, top_p = 0.5, stream = true },
-              command = { temperature = 0.1, top_p = 0.2 },
-          },
-	      models = {
-	        "MiniMax-M2.5",
-	      },
-		  get_available_models = function(self, args)
-			  return { "MiniMax-M2.5" }
-		  end,
-		  preprocess_payload = function(payload)
-			    for _, message in ipairs(payload.messages) do
-			      message.content = message.content:gsub("^%s*(.-)%s*$", "%1")
-			    end
-				print(payload)
-				payload.max_tokens = nil
-			    return payload
-		  end,
-		},
-        qwen = {
+    qwen = {
             name = "qwen",
             api_key = os.getenv "MYQWEN_API_KEY",
             endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
