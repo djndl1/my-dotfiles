@@ -229,6 +229,7 @@ bar {
     position top
     swaybar_command waybar
 }
+seat * xcursor_theme "Adwaita" 48
 
 output DP-1 pos 0 0 background "/usr/share/backgrounds/greybird.svg" fill
 output eDP-1 scale 1.25 pos 0 1080 background "/usr/share/backgrounds/greybird.svg" fill
