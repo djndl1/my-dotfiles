@@ -39,66 +39,7 @@ end
 
 require("parrot").setup {
     providers = {
-    qwen = {
-            name = "qwen",
-            api_key = os.getenv "MYQWEN_API_KEY",
-            endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1/chat/completions',
-            model_endpoint = 'https://dashscope.aliyuncs.com/compatible-mode/v1/models',
-            params = {
-                chat = { temperature = 0.5, top_p = 1 },
-                command = { temperature = 0.1, top_p = 1 },
-            },
-            models = {
-				        "qwen3-max",
-                "qwen2-57b-a14b-instruct",
-				        "qwen2-72b-instruct",
-				        "qwen2-7b-instruct",
-				        "qwen2.5-1.5b-instruct",
-				        "qwen2.5-7b-instruct",
-				        "qwen2.5-72b-instruct",
-				        "qwen2.5-32b-instruct",
-				        "qwen2.5-coder-32b-instruct",
-				        "qwen2.5-coder-14b-instruct",
-				        "qwen3-30b-a3b",
-				        "qwen3-32b",
-				        "qwen2.5-3b-instruct",
-				        "deepseek-v3",
-				        "qwen3-235b-a22b",
-				        "qwen3-max-2026-01-23",
-				        "Moonshot-Kimi-K2-Instruct",
-				        "qwen3-coder-plus-2025-07-22",
-				        "qwen3-coder-480b-a35b-instruct",
-				        "qwen3-235b-a22b-instruct-2507",
-				        "qwen3-235b-a22b-thinking-2507",
-				        "qwen3-30b-a3b-thinking-2507",
-				        "qwen3-30b-a3b-instruct-2507",
-				        "qwen3-coder-30b-a3b-instruct",
-				        "qwen3-coder-flash-2025-07-28",
-				        "glm-4.5",
-				        "glm-4.7",
-				        "deepseek-v3.1",
-				        "qwen3-next-80b-a3b-thinking",
-				        "qwen3-next-80b-a3b-instruct",
-				        "qwen3-coder-plus-2025-09-23",
-				        "kimi-k2-thinking",
-				        "deepseek-v3.2-exp",
-				        "glm-4.6",
-				        "deepseek-r1-0528",
-				        "qwen3-max-2025-09-23",
-				        "deepseek-r1",
-				        "deepseek-v3.2",
-				        "kimi-k2.5j",
-				        "qwen3-coder-nextj",
-				        "qwen3.5-plus",
-				        "qwen3.5-plus-2026-02-15",
-				        "qwen3.5-397b-a17b",
-				        "qwen3.5-122b-a10b",
-				        "qwen3.5-35b-a3b",
-				        "qwen3.5-27b",
-				        "MiniMax-M2.5",
-            }
-        },
-        deepseek = {
+    deepseek = {
             name = "deepseek",
             api_key = os.getenv "DEEPSEEK_API_KEY",
             endpoint = os.getenv "DEEPSEEK_BASE_URL" .. 'chat/completions',
@@ -108,14 +49,14 @@ require("parrot").setup {
                 command = { temperature = 0.1, top_p = 1 },
             },
             topic = {
-                model = "AGIOne.101876501632454656",
-                params = { max_completion_tokens = 64 },
+                model = "glm-5.1-fp8",
+                params = { max_completion_tokens = 1024 },
             },
             models = {
-                "AGIOne.101876501632454656",
+                "glm-5.1-fp8",
             },
 		  get_available_models = function(self, args)
-			  return { "AGIOne.101876501632454656" }
+			  return { "glm-5.1-fp8" }
 		  end,
         }
     },
