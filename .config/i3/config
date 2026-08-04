@@ -69,7 +69,6 @@ bindsym $mod+Shift+q kill
 # start dmenu (a program launcher)
 #set $kmenu --no-startup-id qdbus org.kde.krunner /App display
 #bindsym $mod+d exec --no-startup-id dmenu_run
-bindsym $mod+d exec "rofi -modi drun,run,window,filebrowser -show drun"
 bindsym $mod+Tab exec "rofi -modi drun,run,window,filebrowser -show window"
 #bindsym $mod+d exec $kmenu
 bindsym $mod+d exec "rofi -modi drun,run,window,filebrowser -show drun -font 'Cascadia Mono 10'"
