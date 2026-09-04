@@ -1,0 +1,14 @@
+{
+  "lastChangelogVersion": "0.84.4",
+  "theme": "dark",
+  "packages": [
+    "npm:@narumitw/pi-lsp",
+    "npm:@narumitw/pi-plan-mode",
+    "npm:pi-web-access",
+    "npm:pi-subagents",
+    "npm:pi-nvidia-nim",
+    "npm:pi-memory",
+    "npm:pi-mcp-adapter",
+    "npm:@gotgenes/pi-permission-system"
+  ]
+}

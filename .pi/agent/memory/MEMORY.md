@@ -1,0 +1,2 @@
+<!-- 2026-09-04 15:55:29 [01a06b33] -->
+Modified PathSwitchFeederSelectionTask.cs to handle flows with StrtBinMode = AutoBinSwitchOnLowBinLevel by fetching feeder details from SourceBinSwitchStatusRepository instead of using StrtBinSelList.
