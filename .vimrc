@@ -204,6 +204,8 @@ endif
 """ }}} 
 
 " {{{ LSP, DAP, Linting
+let g:gutentags_enabled = 0
+
 
 let g:ale_linters = {'cs': ['lsp']}
 let g:ale_virtualtext_cursor = 'disabled'
