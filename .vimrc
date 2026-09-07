@@ -204,6 +204,7 @@ endif
 """ }}} 
 
 " {{{ LSP, DAP, Linting
+let g:gutentags_project_root = [ '.project_root' ]
 let g:gutentags_enabled = 0
 
 

@@ -1,8 +1,6 @@
 local vimrc = vim.fn.stdpath('config') .. '/vimrc'
 vim.cmd.source(vimrc)
 
-vim.g.gutentags_project_root = { '.project_root' }
-
 require("mason").setup()
 require("mason-lspconfig").setup()
 
