@@ -28,10 +28,15 @@ function mono-debug {
     mono --debug --debugger-agent=transport=dt_socket,server=y,address=${address} "$@"
 }
 
+function set-ssh-socks5-proxy {
+    export {https,http,ftp}_proxy=socks5h://127.0.0.1:10080
+}
+function unset-proxy {
+    unset {https,http,ftp}_proxy
+}
+
 export MANPAGER='nvim +Man!'
 export VISUAL='vim -u ~/.init.vim'
-
-HKPROXY='http://djn:freebird@mytencent2:8888'
 
 export ORACLE_PATH="${HOME}/Oracle/dbs"
 export TNS_ADMIN="${HOME}/Oracle/network/admin"
