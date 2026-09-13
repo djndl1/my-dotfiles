@@ -28,6 +28,15 @@ function mono-debug {
     mono --debug --debugger-agent=transport=dt_socket,server=y,address=${address} "$@"
 }
 
+function set-dotnet-dev-env {
+    export DOTNET_ENVIRONMENT='Development'
+    export ASPNETCORE_ENVIRONMENT='Development'
+}
+function unset-dotnet-env {
+    unset DOTNET_ENVIRONMENT
+    unset ASPNETCORE_ENVIRONMENT
+}
+
 function set-ssh-socks5-proxy {
     export {https,http,ftp}_proxy=socks5h://127.0.0.1:10080
 }
