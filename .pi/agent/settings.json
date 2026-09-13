@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "0.84.4",
+  "lastChangelogVersion": "0.85.1",
   "theme": "dark",
   "packages": [
     "npm:@narumitw/pi-lsp",
@@ -9,6 +9,8 @@
     "npm:pi-nvidia-nim",
     "npm:pi-memory",
     "npm:pi-mcp-adapter",
-    "npm:@gotgenes/pi-permission-system"
+    "npm:@gotgenes/pi-permission-system",
+    "npm:pi-web-search",
+    "npm:pi-web-ui"
   ]
 }
