@@ -14,7 +14,9 @@
     "npm:pi-question-tool",
     "npm:@fodx/codelens",
     "npm:pi-open-tui",
-    "npm:pi-hashline-edit-pro",
     "npm:billion-context"
-  ]
+  ],
+  "compaction": {
+    "enabled": true
+  }
 }
