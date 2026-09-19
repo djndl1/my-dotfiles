@@ -10,7 +10,11 @@
     "npm:pi-memory",
     "npm:pi-mcp-adapter",
     "npm:@gotgenes/pi-permission-system",
-    "npm:pi-web-search",
-    "npm:pi-web-ui"
+    "npm:pi-web-ui",
+    "npm:pi-question-tool",
+    "npm:@fodx/codelens",
+    "npm:pi-open-tui",
+    "npm:pi-hashline-edit-pro",
+    "npm:billion-context"
   ]
 }
