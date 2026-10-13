@@ -1,22 +1,23 @@
 {
-  "lastChangelogVersion": "0.85.1",
+  "lastChangelogVersion": "1.2.0",
   "theme": "dark",
   "packages": [
     "npm:@narumitw/pi-lsp",
     "npm:@narumitw/pi-plan-mode",
     "npm:pi-web-access",
     "npm:pi-subagents",
-    "npm:pi-nvidia-nim",
     "npm:pi-memory",
-    "npm:pi-mcp-adapter",
     "npm:@gotgenes/pi-permission-system",
     "npm:pi-web-ui",
     "npm:pi-question-tool",
     "npm:@fodx/codelens",
     "npm:pi-open-tui",
-    "npm:billion-context"
+    "npm:pi-smart-compact"
   ],
   "compaction": {
     "enabled": true
-  }
+  },
+  "extensions": [
+    "-builtin:mcp"
+  ]
 }
