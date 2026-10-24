@@ -12,7 +12,12 @@
     },
     "external_directory": "ask",
     "bash": {
+      "*": "ask",
+      "rm -rf *": "deny",
+      "sudo *": "ask",
       "head *": "allow",
+      "cd *": "allow",
+      "for *": "allow",
       "cat *": "allow",
       "tail *": "allow",
       "grep *": "allow",
@@ -22,10 +27,7 @@
       "git diff *": "allow",
       "git status *": "allow",
       "git show *": "allow",
-      "git log *": "allow",
-      "*": "ask",
-      "rm -rf *": "deny",
-      "sudo *": "ask"
+      "git log *": "allow"
     }
   }
 }

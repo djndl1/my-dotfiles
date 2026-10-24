@@ -1,6 +1,6 @@
 {
-  "lastChangelogVersion": "1.2.0",
-  "theme": "dark",
+  "lastChangelogVersion": "1.4.0",
+  "theme": "cosmic-lagoon",
   "packages": [
     "npm:@narumitw/pi-lsp",
     "npm:@narumitw/pi-plan-mode",
@@ -12,12 +12,16 @@
     "npm:pi-question-tool",
     "npm:@fodx/codelens",
     "npm:pi-open-tui",
-    "npm:pi-smart-compact"
+    "npm:pi-smart-compact",
+    "npm:awesome-pi-themes",
+    "npm:better-custom-provider",
+    "npm:pi-commandcode-provider"
   ],
   "compaction": {
     "enabled": true
   },
   "extensions": [
     "-builtin:mcp"
-  ]
+  ],
+  "hideThinkingBlock": false
 }
