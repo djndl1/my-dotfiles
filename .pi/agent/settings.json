@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.5.2",
+  "lastChangelogVersion": "1.6.0",
   "theme": "cosmic-lagoon",
   "packages": [
     "npm:@narumitw/pi-lsp",
@@ -17,7 +17,9 @@
     "npm:better-custom-provider",
     "npm:pi-commandcode-provider",
     "npm:@piex-dev/dap",
-    "npm:@wbline/pi-opencode-adapter"
+    "npm:@wbline/pi-opencode-adapter",
+    "npm:pi-tool-repair",
+    "npm:pi-model-system-prompt"
   ],
   "compaction": {
     "enabled": true
@@ -28,18 +30,18 @@
   "defaultTools": [
     "+codemode"
   ],
-  "hideThinkingBlock": false,
+  "hideThinkingBlock": true,
   "extensionChangelogVersions": {
     "{\"source\":\"npm:@narumitw/pi-lsp\",\"scope\":\"user\"}": "0.49.12",
-    "{\"source\":\"npm:@narumitw/pi-plan-mode\",\"scope\":\"user\"}": "0.60.0",
-    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.47.0",
-    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.88.0",
+    "{\"source\":\"npm:@narumitw/pi-plan-mode\",\"scope\":\"user\"}": "0.62.0",
+    "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
+    "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.90.0",
     "{\"source\":\"npm:pi-memory\",\"scope\":\"user\"}": "0.4.2",
-    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.0.0",
-    "{\"source\":\"npm:pi-web-ui\",\"scope\":\"user\"}": "0.119.0",
-    "{\"source\":\"npm:pi-open-tui\",\"scope\":\"user\"}": "0.4.4",
+    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.2.1",
+    "{\"source\":\"npm:pi-web-ui\",\"scope\":\"user\"}": "0.122.0",
+    "{\"source\":\"npm:pi-open-tui\",\"scope\":\"user\"}": "0.4.7",
     "{\"source\":\"npm:pi-smart-compact\",\"scope\":\"user\"}": "10.8.1",
     "{\"source\":\"npm:awesome-pi-themes\",\"scope\":\"user\"}": "1.2.19",
-    "{\"source\":\"npm:pi-commandcode-provider\",\"scope\":\"user\"}": "0.8.1"
+    "{\"source\":\"npm:pi-commandcode-provider\",\"scope\":\"user\"}": "0.8.7"
   }
 }
