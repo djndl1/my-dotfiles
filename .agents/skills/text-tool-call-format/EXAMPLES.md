@@ -3,53 +3,63 @@
 ## Example 1: Simple bash command
 
 **Model output:**
-```xml
-<bash>
-<param=command>echo "hello world"</param>
-</bash>
+```
+<｜DSML｜tool_calls>
+<｜DSML｜invoke name="bash">
+<｜DSML｜parameter name="command" string="true">echo "hello world"</｜DSML｜parameter>
+</｜DSML｜invoke>
+</｜DSML｜tool_calls>
 ```
 
-**Extension behavior:** Shows confirm dialog → on approval runs `echo "hello world"` → displays result.
+**Extension behavior:** pi-dsml recovers this into a real tool call at `message_end`. Pi's normal execution pipeline runs `echo "hello world"` (subject to `pi-permission-system` bash rules).
 
 ## Example 2: dotnet build
 
 **Model output:**
-```xml
-<bash>
-<param=command>dotnet build IronMakingIntegration/IronMakingIntegration.csproj -f net8.0 2>&1 | tail -20</param>
-</bash>
+```
+<｜DSML｜tool_calls>
+<｜DSML｜invoke name="bash">
+<｜DSML｜parameter name="command" string="true">dotnet build IronMakingIntegration/IronMakingIntegration.csproj -f net8.0 2>&1 | tail -20</｜DSML｜parameter>
+</｜DSML｜invoke>
+</｜DSML｜tool_calls>
 ```
 
 ## Example 3: Read a file
 
 **Model output:**
-```xml
-<read>
-<param=path>IronMakingIntegration/DatabaseModels/UploadDirectory.cs</param>
-</read>
+```
+<｜DSML｜tool_calls>
+<｜DSML｜invoke name="read">
+<｜DSML｜parameter name="path" string="true">IronMakingIntegration/DatabaseModels/UploadDirectory.cs</｜DSML｜parameter>
+</｜DSML｜invoke>
+</｜DSML｜tool_calls>
 ```
 
 ## Example 4: Multiple calls
 
 **Model output:**
-```xml
-<bash>
-<param=command>pwd</param>
-</bash>
+```
+<｜DSML｜tool_calls>
+<｜DSML｜invoke name="bash">
+<｜DSML｜parameter name="command" string="true">pwd</｜DSML｜parameter>
+</｜DSML｜invoke>
+</｜DSML｜tool_calls>
 
-<bash>
-<param=command>ls -la</param>
-</bash>
+<｜DSML｜tool_calls>
+<｜DSML｜invoke name="bash">
+<｜DSML｜parameter name="command" string="true">ls -la</｜DSML｜parameter>
+</｜DSML｜invoke>
+</｜DSML｜tool_calls>
 ```
 
 ## Example 5: Write with multi-line content
 
 **Model output:**
-```xml
-<write>
-<param=path>/tmp/test.txt</param>
-<param=content>Hello
-This is multi-line content
-With several lines</param>
-</write>
+```
+<｜DSML｜tool_calls>
+<｜DSML｜invoke name="write">
+<｜DSML｜parameter name="path" string="true">PATH</｜DSML｜parameter>
+<｜DSML｜parameter name="content" string="true">CONTENT</｜DSML｜parameter>
+</｜DSML｜invoke>
+</｜DSML｜tool_calls>
 ```

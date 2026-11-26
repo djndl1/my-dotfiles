@@ -1,5 +1,5 @@
 {
-  "lastChangelogVersion": "1.6.0",
+  "lastChangelogVersion": "1.6.1",
   "theme": "cosmic-lagoon",
   "packages": [
     "npm:@narumitw/pi-lsp",
@@ -18,8 +18,8 @@
     "npm:pi-commandcode-provider",
     "npm:@piex-dev/dap",
     "npm:@wbline/pi-opencode-adapter",
-    "npm:pi-tool-repair",
-    "npm:pi-model-system-prompt"
+    "npm:pi-runtime-extensions",
+    "npm:pi-dsml"
   ],
   "compaction": {
     "enabled": true
@@ -37,7 +37,7 @@
     "{\"source\":\"npm:pi-web-access\",\"scope\":\"user\"}": "0.48.0",
     "{\"source\":\"npm:pi-subagents\",\"scope\":\"user\"}": "0.90.0",
     "{\"source\":\"npm:pi-memory\",\"scope\":\"user\"}": "0.4.2",
-    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "42.2.1",
+    "{\"source\":\"npm:@gotgenes/pi-permission-system\",\"scope\":\"user\"}": "44.0.1",
     "{\"source\":\"npm:pi-web-ui\",\"scope\":\"user\"}": "0.122.0",
     "{\"source\":\"npm:pi-open-tui\",\"scope\":\"user\"}": "0.4.7",
     "{\"source\":\"npm:pi-smart-compact\",\"scope\":\"user\"}": "10.8.1",
